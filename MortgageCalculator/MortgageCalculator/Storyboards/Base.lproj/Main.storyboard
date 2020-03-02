@@ -15,18 +15,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBD-RS-vE7">
-                                <rect key="frame" x="167.5" y="628" width="79" height="30"/>
-                                <state key="normal" title="Add A Loan"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Loans to Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-7k-VUI">
+                                <rect key="frame" x="87.5" y="432" width="239" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOd-nX-JMG">
+                                <rect key="frame" x="165" y="622" width="84" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="CYe-mG-P1L"/>
+                                    <constraint firstAttribute="width" constant="84" id="uQE-VF-8er"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" image="plus.rectangle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60" scale="medium" weight="light"/>
+                                </state>
                                 <connections>
-                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoan" id="oJl-md-sNT"/>
+                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoan" id="BHp-Nf-2dT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A Loan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pye-kR-u9d">
+                                <rect key="frame" x="161.5" y="701" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HBD-RS-vE7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sSV-Xg-gmz"/>
-                            <constraint firstItem="HBD-RS-vE7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="vXW-wG-4iO"/>
+                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5xf-sk-eeo"/>
+                            <constraint firstItem="Pye-kR-u9d" firstAttribute="bottom" secondItem="gOd-nX-JMG" secondAttribute="bottom" id="Rqf-hp-5cP"/>
+                            <constraint firstItem="Pye-kR-u9d" firstAttribute="centerX" secondItem="gOd-nX-JMG" secondAttribute="centerX" id="Zsl-yz-ls5"/>
+                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkE-50-N3m"/>
+                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vnD-qC-GMm"/>
+                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="ylA-VA-8LW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -80,6 +103,9 @@
                                                     <segment title="Purchase Price"/>
                                                     <segment title="Monthly Payment"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="priceOrPaymentSelected:" destination="MKF-9v-8P5" eventType="valueChanged" id="0s6-kY-xHP"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -148,19 +174,20 @@
                                                     <segment title="25y"/>
                                                     <segment title="30y"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="termSelected:" destination="MKF-9v-8P5" eventType="valueChanged" id="vaP-xE-ELZ"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76V-3K-uhF">
-                                <rect key="frame" x="19" y="20" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76V-3K-uhF">
+                                <rect key="frame" x="20" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0I-2Y-jrB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0I-2Y-jrB">
                                 <rect key="frame" x="330" y="20" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-Rs-3bK">
@@ -172,14 +199,27 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="20" id="2gd-4z-Lpn"/>
                             <constraint firstItem="ysb-01-n2n" firstAttribute="leading" secondItem="gMM-97-1bH" secondAttribute="leading" constant="40" id="5EJ-jc-6Ld"/>
                             <constraint firstItem="ysb-01-n2n" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="100" id="6FG-9G-ZZJ"/>
+                            <constraint firstItem="g2B-Rs-3bK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="76V-3K-uhF" secondAttribute="trailing" constant="10" id="CAq-7c-CdE"/>
                             <constraint firstItem="gMM-97-1bH" firstAttribute="trailing" secondItem="ysb-01-n2n" secondAttribute="trailing" constant="40" id="Ff3-SX-PRn"/>
+                            <constraint firstItem="gMM-97-1bH" firstAttribute="trailing" secondItem="P0I-2Y-jrB" secondAttribute="trailing" constant="20" id="IEQ-fB-rUj"/>
                             <constraint firstItem="g2B-Rs-3bK" firstAttribute="centerX" secondItem="lSj-sp-BGj" secondAttribute="centerX" id="OdU-QQ-sAD"/>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="leading" secondItem="gMM-97-1bH" secondAttribute="leading" constant="20" id="c5A-xM-xxb"/>
+                            <constraint firstItem="P0I-2Y-jrB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g2B-Rs-3bK" secondAttribute="trailing" constant="10" id="vx5-eF-sCz"/>
                             <constraint firstItem="g2B-Rs-3bK" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="20" id="xJ0-Rl-4U1"/>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="centerY" secondItem="P0I-2Y-jrB" secondAttribute="centerY" id="yYW-85-4MP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gMM-97-1bH"/>
                     </view>
+                    <connections>
+                        <outlet property="downPaymentTextField" destination="mPk-k9-iKO" id="xEP-O1-lTq"/>
+                        <outlet property="interestRateTextField" destination="EEj-36-R4q" id="mwq-9p-Xia"/>
+                        <outlet property="priceOrPaymentSelector" destination="lie-bA-YWX" id="MnW-Dh-ba5"/>
+                        <outlet property="priceOrPaymentTextField" destination="sue-Bo-aSj" id="ZbM-x1-3M7"/>
+                        <outlet property="termSelector" destination="oqL-9U-sbI" id="NNA-L6-GZn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqk-FM-xYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -197,6 +237,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.rectangle" catalog="system" width="64" height="46"/>
         <image name="text.alignleft" catalog="system" width="64" height="50"/>
     </resources>
 </document>
