@@ -8,16 +8,8 @@
 
 import Foundation
 
-
-struct AmortizationData {
-    let interest: Double
-    let principle: Double
-    let balance: Double
-}
-
-typealias AmortizationTable = [AmortizationData]
-
 struct Calculator {
+    
     static func monthlyPayment(forLoan loan: Loan) -> Double {
         guard var principle = loan.purchasePrice else { return loan.monthlyPayment ?? 0 }
         principle -= loan.downPayment
@@ -33,7 +25,7 @@ struct Calculator {
         return 1000000
     }
     
-    static func amortizationTable(forLoan loan: Loan) -> AmortizationTable {
+    static func amortizationTable(forLoan loan: Loan) -> AmortizationSchedule {
         var balance = loan.purchasePrice ?? Calculator.purchasePrice(forLoan: loan)
         let monthlyPayment = loan.monthlyPayment ?? Calculator.monthlyPayment(forLoan: loan)
         
