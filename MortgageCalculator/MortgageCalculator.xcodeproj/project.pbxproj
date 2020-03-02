@@ -17,6 +17,9 @@
 		04392C6D240DA03F00695665 /* LoanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C6C240DA03F00695665 /* LoanDetailViewController.swift */; };
 		04392C6F240DA06500695665 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C6E240DA06500695665 /* SummaryViewController.swift */; };
 		04392C75240DB13A00695665 /* Amortization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C74240DB13A00695665 /* Amortization.swift */; };
+		04392C77240DB1B600695665 /* Graphs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04392C76240DB1B600695665 /* Graphs.storyboard */; };
+		04392C79240DB27700695665 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04392C78240DB27700695665 /* SummaryView.xib */; };
+		04392C7B240DB29A00695665 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7A240DB29A00695665 /* SummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +33,11 @@
 		04392C68240D986E00695665 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		04392C6A240D988A00695665 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 		04392C6C240DA03F00695665 /* LoanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailViewController.swift; sourceTree = "<group>"; };
-		04392C6E240DA06500695665 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = "MortgageCalculator/New Group/SummaryViewController.swift"; sourceTree = SOURCE_ROOT; };
+		04392C6E240DA06500695665 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = MortgageCalculator/ViewControllers/SummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		04392C74240DB13A00695665 /* Amortization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amortization.swift; sourceTree = "<group>"; };
+		04392C76240DB1B600695665 /* Graphs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphs.storyboard; sourceTree = "<group>"; };
+		04392C78240DB27700695665 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
+		04392C7A240DB29A00695665 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,28 +70,30 @@
 		04392C53240D97CA00695665 /* MortgageCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				04392C70240DA07800695665 /* View Controllers */,
+				04392C70240DA07800695665 /* ViewControllers */,
 				04392C72240DA09800695665 /* Resources */,
+				04392C7C240DB2B200695665 /* Views */,
 				04392C71240DA08700695665 /* Storyboards */,
 				04392C73240DA10D00695665 /* Model */,
-				04392C5F240D97CC00695665 /* LaunchScreen.storyboard */,
 			);
 			path = MortgageCalculator;
 			sourceTree = "<group>";
 		};
-		04392C70240DA07800695665 /* View Controllers */ = {
+		04392C70240DA07800695665 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				04392C6E240DA06500695665 /* SummaryViewController.swift */,
 				04392C6C240DA03F00695665 /* LoanDetailViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		04392C71240DA08700695665 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				04392C5A240D97CA00695665 /* Main.storyboard */,
+				04392C76240DB1B600695665 /* Graphs.storyboard */,
+				04392C5F240D97CC00695665 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -109,6 +117,15 @@
 				04392C6A240D988A00695665 /* Loan.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		04392C7C240DB2B200695665 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04392C78240DB27700695665 /* SummaryView.xib */,
+				04392C7A240DB29A00695665 /* SummaryView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +186,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04392C79240DB27700695665 /* SummaryView.xib in Resources */,
 				04392C61240D97CC00695665 /* LaunchScreen.storyboard in Resources */,
+				04392C77240DB1B600695665 /* Graphs.storyboard in Resources */,
 				04392C5E240D97CC00695665 /* Assets.xcassets in Resources */,
 				04392C5C240D97CA00695665 /* Main.storyboard in Resources */,
 			);
@@ -187,6 +206,7 @@
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,
 				04392C6D240DA03F00695665 /* LoanDetailViewController.swift in Sources */,
+				04392C7B240DB29A00695665 /* SummaryView.swift in Sources */,
 				04392C75240DB13A00695665 /* Amortization.swift in Sources */,
 				04392C6F240DA06500695665 /* SummaryViewController.swift in Sources */,
 			);

@@ -10,47 +10,21 @@
         <!--Summary-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SummaryViewController" customModule="MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyy-LB-0dO">
-                                <rect key="frame" x="167.5" y="199.5" width="79" height="30"/>
-                                <state key="normal" title="Add A Loan"/>
-                                <connections>
-                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoanA" id="cOr-2P-JTk"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBD-RS-vE7">
                                 <rect key="frame" x="167.5" y="628" width="79" height="30"/>
                                 <state key="normal" title="Add A Loan"/>
                                 <connections>
-                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoanB" id="oJl-md-sNT"/>
+                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoan" id="oJl-md-sNT"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AE4-i9-KGf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-sA-mW6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="384.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEJ-uU-SSH">
-                                        <rect key="frame" x="0.0" y="384.5" width="414" height="384.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AE4-i9-KGf" secondAttribute="bottom" id="204-qY-PRe"/>
-                            <constraint firstItem="AE4-i9-KGf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2WS-4t-7xt"/>
-                            <constraint firstItem="AE4-i9-KGf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GGG-Gn-TbN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AE4-i9-KGf" secondAttribute="trailing" id="O2s-s6-a8w"/>
-                            <constraint firstItem="Fyy-LB-0dO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.5" id="RsU-gc-39x"/>
-                            <constraint firstItem="Fyy-LB-0dO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1M-yx-5gD"/>
                             <constraint firstItem="HBD-RS-vE7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sSV-Xg-gmz"/>
                             <constraint firstItem="HBD-RS-vE7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="vXW-wG-4iO"/>
                         </constraints>
@@ -73,11 +47,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="1Fu-xO-8lT"/>
+                        <segue destination="2BG-xK-3Fd" kind="relationship" relationship="viewControllers" id="oUN-aW-PpE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b17-Q2-y0Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+            <point key="canvasLocation" x="1912" y="-672"/>
         </scene>
         <!--Loan Detail View Controller-->
         <scene sceneID="dij-kd-lNC">
@@ -94,11 +69,18 @@
             </objects>
             <point key="canvasLocation" x="1913" y="127"/>
         </scene>
+        <!--Graphs-->
+        <scene sceneID="OSu-Yc-BEh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Graphs" id="2BG-xK-3Fd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="QLI-Wy-rMa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BkF-XZ-3FF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="-197"/>
+        </scene>
     </scenes>
     <resources>
         <image name="text.alignleft" catalog="system" width="64" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="oJl-md-sNT"/>
-    </inferredMetricsTieBreakers>
 </document>

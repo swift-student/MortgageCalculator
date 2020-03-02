@@ -31,7 +31,7 @@ struct Calculator {
         
         balance -= loan.downPayment
         
-        var table = AmortizationTable()
+        var table = AmortizationSchedule()
         
         for _ in 1...Int(loan.months) {
             let payment = monthlyPayment < balance ? monthlyPayment : balance
