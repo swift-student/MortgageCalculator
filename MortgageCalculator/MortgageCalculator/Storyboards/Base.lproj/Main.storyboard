@@ -182,14 +182,12 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76V-3K-uhF">
-                                <rect key="frame" x="19" y="20" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76V-3K-uhF">
+                                <rect key="frame" x="20" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0I-2Y-jrB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0I-2Y-jrB">
                                 <rect key="frame" x="330" y="20" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-Rs-3bK">
@@ -201,11 +199,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="20" id="2gd-4z-Lpn"/>
                             <constraint firstItem="ysb-01-n2n" firstAttribute="leading" secondItem="gMM-97-1bH" secondAttribute="leading" constant="40" id="5EJ-jc-6Ld"/>
                             <constraint firstItem="ysb-01-n2n" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="100" id="6FG-9G-ZZJ"/>
+                            <constraint firstItem="g2B-Rs-3bK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="76V-3K-uhF" secondAttribute="trailing" constant="10" id="CAq-7c-CdE"/>
                             <constraint firstItem="gMM-97-1bH" firstAttribute="trailing" secondItem="ysb-01-n2n" secondAttribute="trailing" constant="40" id="Ff3-SX-PRn"/>
+                            <constraint firstItem="gMM-97-1bH" firstAttribute="trailing" secondItem="P0I-2Y-jrB" secondAttribute="trailing" constant="20" id="IEQ-fB-rUj"/>
                             <constraint firstItem="g2B-Rs-3bK" firstAttribute="centerX" secondItem="lSj-sp-BGj" secondAttribute="centerX" id="OdU-QQ-sAD"/>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="leading" secondItem="gMM-97-1bH" secondAttribute="leading" constant="20" id="c5A-xM-xxb"/>
+                            <constraint firstItem="P0I-2Y-jrB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g2B-Rs-3bK" secondAttribute="trailing" constant="10" id="vx5-eF-sCz"/>
                             <constraint firstItem="g2B-Rs-3bK" firstAttribute="top" secondItem="gMM-97-1bH" secondAttribute="top" constant="20" id="xJ0-Rl-4U1"/>
+                            <constraint firstItem="76V-3K-uhF" firstAttribute="centerY" secondItem="P0I-2Y-jrB" secondAttribute="centerY" id="yYW-85-4MP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gMM-97-1bH"/>
                     </view>
