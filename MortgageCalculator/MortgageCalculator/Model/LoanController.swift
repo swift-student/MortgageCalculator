@@ -22,12 +22,12 @@ class LoanController {
     
     func setLoanA(_ loan: Loan) {
         loanA = loan
-        saveToPersistentStore
+        saveToPersistentStore()
     }
     
     func setLoanB(_ loan: Loan) {
         loanB = loan
-        saveToPersistentStore
+        saveToPersistentStore()
     }
 
     
