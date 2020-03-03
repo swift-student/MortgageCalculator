@@ -26,21 +26,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBT-nh-WUQ">
-                                                    <rect key="frame" x="50" y="17" width="314" height="41"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBT-nh-WUQ" userLabel="Header View">
+                                                    <rect key="frame" x="50" y="21" width="314" height="41"/>
                                                     <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="mgN-5u-1cn"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbx-Pv-Tkv">
-                                                    <rect key="frame" x="168.5" y="23" width="77" height="29"/>
+                                                    <rect key="frame" x="168.5" y="27" width="77" height="29"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="tgK-dh-pwj">
-                                                    <rect key="frame" x="50" y="80" width="314" height="221.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="tgK-dh-pwj">
+                                                    <rect key="frame" x="50" y="84" width="314" height="215.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-hL-ECB">
                                                             <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -60,7 +60,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeD-lm-Wrt">
-                                                            <rect key="frame" x="0.0" y="33.5" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="32.5" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Financed..............................................." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-99-Zmp">
                                                                     <rect key="frame" x="0.0" y="0.0" width="234" height="20.5"/>
@@ -77,7 +77,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWY-El-rrv">
-                                                            <rect key="frame" x="0.0" y="67" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="65" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Payment................................................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-Tp-tX7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="255.5" height="20.5"/>
@@ -94,7 +94,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPC-wn-fxj">
-                                                            <rect key="frame" x="0.0" y="100.5" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="97.5" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term...................................................................." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcK-Gk-F3J">
                                                                     <rect key="frame" x="0.0" y="0.0" width="251" height="20.5"/>
@@ -111,7 +111,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPi-Ot-cGP">
-                                                            <rect key="frame" x="0.0" y="134" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="130" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Rate........................................................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-sV-C9z">
                                                                     <rect key="frame" x="0.0" y="0.0" width="272" height="20.5"/>
@@ -128,7 +128,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLh-w8-8Wy">
-                                                            <rect key="frame" x="0.0" y="167.5" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="162.5" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Interest........................................................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro3-ZU-yUr">
                                                                     <rect key="frame" x="0.0" y="0.0" width="234.5" height="20.5"/>
@@ -145,7 +145,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdr-FB-hbm">
-                                                            <rect key="frame" x="0.0" y="201" width="314" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="195" width="314" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Payments........................................................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-CS-i7Q">
                                                                     <rect key="frame" x="0.0" y="0.0" width="231.5" height="20.5"/>
@@ -172,12 +172,14 @@
                                                 <constraint firstItem="wbx-Pv-Tkv" firstAttribute="centerX" secondItem="rzw-0q-hfj" secondAttribute="centerX" id="hou-Hk-KDF"/>
                                                 <constraint firstItem="oBT-nh-WUQ" firstAttribute="leading" secondItem="tgK-dh-pwj" secondAttribute="leading" id="i3Y-mh-plf"/>
                                                 <constraint firstAttribute="trailing" secondItem="tgK-dh-pwj" secondAttribute="trailing" constant="50" id="kQF-dM-UYj"/>
-                                                <constraint firstItem="oBT-nh-WUQ" firstAttribute="top" secondItem="rzw-0q-hfj" secondAttribute="topMargin" constant="6" id="rKG-jT-xpZ"/>
+                                                <constraint firstItem="oBT-nh-WUQ" firstAttribute="top" secondItem="rzw-0q-hfj" secondAttribute="topMargin" constant="10" id="rKG-jT-xpZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="amountFinancedLabel" destination="w8M-bi-Kkl" id="ofC-VL-WkW"/>
+                                            <outlet property="headerView" destination="oBT-nh-WUQ" id="taI-jT-0Fl"/>
                                             <outlet property="interestRateLabel" destination="uQf-9s-AWU" id="rzI-e7-Wjl"/>
+                                            <outlet property="loanNameLabel" destination="wbx-Pv-Tkv" id="3Fm-0c-H5K"/>
                                             <outlet property="monthlyPaymentLabel" destination="u3Y-98-X3K" id="T8J-m8-hi4"/>
                                             <outlet property="purchasePriceLabel" destination="iVl-Vo-xHz" id="e9c-NY-wDj"/>
                                             <outlet property="termLabel" destination="mx5-GC-NLT" id="XFw-xP-9ib"/>
@@ -189,6 +191,13 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eum-AR-dNF" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="426.5" width="414" height="4"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="dyR-bR-5o3"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Loans to Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-7k-VUI">
                                 <rect key="frame" x="87.5" y="413" width="239" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -223,7 +232,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ps6-G5-R1k" secondAttribute="trailing" id="Lsn-eh-XmA"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NXL-Vf-R3q"/>
                             <constraint firstItem="Pye-kR-u9d" firstAttribute="bottom" secondItem="gOd-nX-JMG" secondAttribute="bottom" id="Rqf-hp-5cP"/>
+                            <constraint firstItem="Eum-AR-dNF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XAq-Ff-2eW"/>
                             <constraint firstItem="Pye-kR-u9d" firstAttribute="centerX" secondItem="gOd-nX-JMG" secondAttribute="centerX" id="Zsl-yz-ls5"/>
+                            <constraint firstItem="Eum-AR-dNF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="k0G-bq-CQu"/>
+                            <constraint firstItem="Eum-AR-dNF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rpr-Nl-0rD"/>
                             <constraint firstItem="Jca-7k-VUI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkE-50-N3m"/>
                             <constraint firstItem="gOd-nX-JMG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vnD-qC-GMm"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w13-OK-QVa"/>
@@ -236,6 +248,7 @@
                         <outlet property="addLoanButton" destination="gOd-nX-JMG" id="jHC-Vx-yjA"/>
                         <outlet property="addLoanLabel" destination="Pye-kR-u9d" id="Cpc-0z-FoS"/>
                         <outlet property="noLoansLabel" destination="Jca-7k-VUI" id="3mS-Zt-cOR"/>
+                        <outlet property="separatorView" destination="Eum-AR-dNF" id="d10-ca-ReZ"/>
                         <outlet property="tableView" destination="Ps6-G5-R1k" id="AuM-ig-jYV"/>
                     </connections>
                 </viewController>

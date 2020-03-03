@@ -11,6 +11,8 @@ import UIKit
 class LoanSummaryTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var loanNameLabel: UILabel!
     @IBOutlet weak var purchasePriceLabel: UILabel!
     @IBOutlet weak var amountFinancedLabel: UILabel!
     @IBOutlet weak var monthlyPaymentLabel: UILabel!

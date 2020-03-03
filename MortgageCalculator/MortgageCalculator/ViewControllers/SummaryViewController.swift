@@ -14,6 +14,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var noLoansLabel: UILabel!
     @IBOutlet weak var addLoanButton: UIButton!
     @IBOutlet weak var addLoanLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
     let loanController = LoanController()
     
     override func viewDidLoad() {
@@ -52,7 +53,8 @@ extension SummaryViewController: UITableViewDataSource {
         noLoansLabel.isHidden = numRows > 0
         addLoanButton.isHidden = numRows > 1
         addLoanLabel.isHidden = numRows > 1
-    
+        separatorView.isHidden = numRows < 2
+        
         return numRows
     }
     
@@ -74,7 +76,6 @@ extension SummaryViewController: UITableViewDataSource {
             break
         }
     }
-    
 }
 
 
