@@ -119,6 +119,7 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rug-vH-0yX">
                                 <rect key="frame" x="67" y="591" width="280" height="41"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1Ic-0Q-TWY"/>
                                     <constraint firstAttribute="width" constant="280" id="bTM-eY-bCV"/>
@@ -129,19 +130,60 @@
                                     <segment title="Progress"/>
                                 </segments>
                             </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-98-89E">
+                                <rect key="frame" x="0.0" y="64" width="414" height="487"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CDF-4c-kLH">
+                                    <size key="itemSize" width="400" height="480"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="w5z-SO-oGV">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="480"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5dd-xd-uzR">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="480"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Ei-oem">
+                                                    <rect key="frame" x="48" y="23" width="59" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5AY-bl-BFg">
+                                        <rect key="frame" x="410" y="240" width="0.0" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="kie-hY-Q5w">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="rug-vH-0yX" firstAttribute="top" secondItem="g6v-98-89E" secondAttribute="bottom" constant="40" id="4wD-ZF-b93"/>
                             <constraint firstItem="eGI-tg-U5p" firstAttribute="trailing" secondItem="I6n-L6-yHA" secondAttribute="trailing" id="5fT-2a-h75"/>
                             <constraint firstItem="I6n-L6-yHA" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="5ho-Ys-3bW"/>
                             <constraint firstItem="Woe-IL-8ez" firstAttribute="leading" secondItem="I6n-L6-yHA" secondAttribute="leading" id="7Rg-Vv-ZxA"/>
                             <constraint firstItem="rug-vH-0yX" firstAttribute="centerX" secondItem="w6S-I3-UFO" secondAttribute="centerX" id="D2B-RY-cag"/>
+                            <constraint firstItem="g6v-98-89E" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="MBr-YL-deI"/>
                             <constraint firstItem="Woe-IL-8ez" firstAttribute="bottom" secondItem="I6n-L6-yHA" secondAttribute="bottom" id="O4j-eB-hdJ"/>
+                            <constraint firstItem="g6v-98-89E" firstAttribute="top" secondItem="nOM-l4-tBA" secondAttribute="top" constant="20" id="OVl-rq-3yY"/>
                             <constraint firstItem="eGI-tg-U5p" firstAttribute="bottom" secondItem="I6n-L6-yHA" secondAttribute="bottom" id="QiO-sQ-72F"/>
                             <constraint firstItem="nOM-l4-tBA" firstAttribute="bottom" secondItem="I6n-L6-yHA" secondAttribute="bottom" constant="80" id="R6O-SY-Izw"/>
                             <constraint firstItem="eGI-tg-U5p" firstAttribute="top" secondItem="I6n-L6-yHA" secondAttribute="top" id="e5F-7x-Rhy"/>
                             <constraint firstItem="I6n-L6-yHA" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="fox-nn-XdA"/>
                             <constraint firstItem="eGI-tg-U5p" firstAttribute="leading" secondItem="I6n-L6-yHA" secondAttribute="leading" id="gEI-QO-pWX"/>
+                            <constraint firstItem="g6v-98-89E" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="sI4-XA-1W8"/>
                             <constraint firstItem="Woe-IL-8ez" firstAttribute="top" secondItem="rug-vH-0yX" secondAttribute="bottom" constant="46" id="szk-cO-bSt"/>
                             <constraint firstItem="Woe-IL-8ez" firstAttribute="trailing" secondItem="I6n-L6-yHA" secondAttribute="trailing" id="t4a-Rl-y4S"/>
                             <constraint firstItem="Woe-IL-8ez" firstAttribute="top" secondItem="I6n-L6-yHA" secondAttribute="top" id="wDF-tm-dCB"/>
