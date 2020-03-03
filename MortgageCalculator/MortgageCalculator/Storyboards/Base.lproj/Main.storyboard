@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoanSummaryCell" rowHeight="360" id="QO4-xu-yRE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoanSummaryCell" rowHeight="360" id="QO4-xu-yRE" customClass="LoanSummaryTableViewCell" customModule="MortgageCalculator" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QO4-xu-yRE" id="rzw-0q-hfj">
@@ -175,6 +175,15 @@
                                                 <constraint firstItem="oBT-nh-WUQ" firstAttribute="top" secondItem="rzw-0q-hfj" secondAttribute="topMargin" constant="6" id="rKG-jT-xpZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountFinancedLabel" destination="w8M-bi-Kkl" id="ofC-VL-WkW"/>
+                                            <outlet property="interestRateLabel" destination="uQf-9s-AWU" id="rzI-e7-Wjl"/>
+                                            <outlet property="monthlyPaymentLabel" destination="u3Y-98-X3K" id="T8J-m8-hi4"/>
+                                            <outlet property="purchasePriceLabel" destination="iVl-Vo-xHz" id="e9c-NY-wDj"/>
+                                            <outlet property="termLabel" destination="mx5-GC-NLT" id="XFw-xP-9ib"/>
+                                            <outlet property="totalInterestLabel" destination="Yh2-l0-hu1" id="ytE-A1-cv5"/>
+                                            <outlet property="totalPaymentsLabel" destination="h49-gp-FAH" id="b0q-d8-Qjg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>

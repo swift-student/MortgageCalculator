@@ -53,8 +53,11 @@ extension SummaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LoanSummaryCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LoanSummaryCell", for: indexPath) as? LoanSummaryTableViewCell else {
+            fatalError("Unable to cast cell to type \(LoanSummaryTableViewCell.self)")
+        }
         
+        cell.loan = loanController.loans[indexPath.row]
         return cell
     }
     

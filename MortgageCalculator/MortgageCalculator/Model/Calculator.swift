@@ -25,9 +25,14 @@ struct Calculator {
         var purchasePrice = monthlyPayment / magicNumber(monthlyRate: loan.monthlyRate, months: loan.months)
         purchasePrice += loan.downPayment
         
-        return purchasePrice.roundedToCent(.down)
+        return purchasePrice.roundedToCent(.down)  
     }
     
+    static func totalInterest(forLoan loan: Loan) -> Double {
+        let schedule = Calculator.monthlyAmortizationSchedule(forLoan: loan)
+        let totalInterest = schedule.map { $0.interest }.reduce(0, { $0 + $1})
+        return totalInterest.roundedToCent(.toNearestOrAwayFromZero)
+    }
    
     
     static func monthlyAmortizationSchedule(forLoan loan: Loan) -> AmortizationSchedule {
