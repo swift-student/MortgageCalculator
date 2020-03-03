@@ -24,6 +24,8 @@
 		04392C79240DB27700695665 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04392C78240DB27700695665 /* SummaryView.xib */; };
 		04392C7B240DB29A00695665 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7A240DB29A00695665 /* SummaryView.swift */; };
 		04392C7E240DCAAA00695665 /* LoanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7D240DCAA900695665 /* LoanController.swift */; };
+		04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7250D240EF42800A47A62 /* GraphsViewController.swift */; };
+		04F72510240EF8F800A47A62 /* YearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7250F240EF8F800A47A62 /* YearCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		04392C78240DB27700695665 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
 		04392C7A240DB29A00695665 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		04392C7D240DCAA900695665 /* LoanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanController.swift; sourceTree = "<group>"; };
+		04F7250D240EF42800A47A62 /* GraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
+		04F7250F240EF8F800A47A62 /* YearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YearCell.swift; path = MortgageCalculator/ViewControllers/YearCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 		04392C70240DA07800695665 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04F7250D240EF42800A47A62 /* GraphsViewController.swift */,
 				04392C6E240DA06500695665 /* SummaryViewController.swift */,
 				040FD6BB240EC6500018AA42 /* MortgageTabBarController.swift */,
 				04392C6C240DA03F00695665 /* LoanDetailViewController.swift */,
@@ -133,6 +138,7 @@
 		04392C7C240DB2B200695665 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04F7250F240EF8F800A47A62 /* YearCell.swift */,
 				040FD6B9240EBED70018AA42 /* LoanSummaryTableViewCell.swift */,
 				04392C78240DB27700695665 /* SummaryView.xib */,
 				04392C7A240DB29A00695665 /* SummaryView.swift */,
@@ -215,8 +221,10 @@
 			files = (
 				040FD6BA240EBED70018AA42 /* LoanSummaryTableViewCell.swift in Sources */,
 				04392C6B240D988A00695665 /* Loan.swift in Sources */,
+				04F72510240EF8F800A47A62 /* YearCell.swift in Sources */,
 				040FD6BE240ED0780018AA42 /* CurrencyExtensions.swift in Sources */,
 				04392C69240D986E00695665 /* Calculator.swift in Sources */,
+				04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */,
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,
 				040FD6BC240EC6500018AA42 /* MortgageTabBarController.swift in Sources */,
