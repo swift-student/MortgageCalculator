@@ -13,23 +13,13 @@ class LoanDetailViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var priceOrPaymentSelector: UISegmentedControl!
     @IBOutlet weak var priceOrPaymentTextField: UITextField!
-    @IBOutlet weak var priceOrPaymentLabel: UILabel!
     @IBOutlet weak var downPaymentTextField: UITextField!
     @IBOutlet weak var interestRateTextField: UITextField!
     @IBOutlet weak var termSelector: UISegmentedControl!
     
     
     //MARK: - IBActions
-    
     @IBAction func priceOrPaymentSelected(_ sender: UISegmentedControl) {
-        guard let loan = loan else { return }
-        if sender.selectedSegmentIndex == 0 {
-            priceOrPaymentLabel.text = "Purchase Price:"
-            priceOrPaymentTextField.text = String(loan.purchasePrice ?? 0)
-        } else {
-            priceOrPaymentLabel.text = "Monthly Payment:"
-             priceOrPaymentTextField.text = String(loan.monthlyPayment ?? 0)
-        }
     }
     
     @IBAction func termSelected(_ sender: UISegmentedControl) {

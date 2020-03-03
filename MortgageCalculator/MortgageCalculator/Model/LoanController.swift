@@ -14,26 +14,24 @@ class LoanController {
         loadFromPersistentStore()
     }
     
+    
     //MARK: - CRUD
-    
 
-    private(set) var loanA: Loan?
-    private(set) var loanB: Loan?
+    private(set) var loans = [Loan]()
     
-    func setLoanA(_ loan: Loan) {
-        loanA = loan
+    func add(loan: Loan) {
+        loans.append(loan)
         saveToPersistentStore()
     }
     
-    func setLoanB(_ loan: Loan) {
-        loanB = loan
+    func update(loan: Loan) {
+        guard let index = loans.firstIndex(of: loan) else { return }
+        loans[index] = loan
         saveToPersistentStore()
     }
-
+    
     
     //MARK: - Persistence
-    
-    private var loans = [Loan]()
     
     private let fileName = "Loans.plist"
     

@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct Loan: Codable {
+struct Loan: Codable, Identifiable, Equatable {
+    let id = UUID()
+    
     var purchasePrice: Double?
     var monthlyPayment: Double?
     var downPayment: Double
@@ -25,19 +27,7 @@ struct Loan: Codable {
         term * 12
     }
     
-    init(purchasePrice: Double, downPayment: Double, interestRate: Double, term: Int) {
-        self.purchasePrice = purchasePrice
-        self.monthlyPayment = nil
-        self.downPayment = downPayment
-        self.interestRate = interestRate
-        self.term = term
-    }
-    
-    init(monthlyPayment: Double, downPayment: Double, interestRate: Double, term: Int) {
-        self.purchasePrice = nil
-        self.monthlyPayment = monthlyPayment
-        self.downPayment = downPayment
-        self.interestRate = interestRate
-        self.term = term
+    static func == (lhs: Loan, rhs: Loan) -> Bool {
+        lhs.id == rhs.id
     }
 }
