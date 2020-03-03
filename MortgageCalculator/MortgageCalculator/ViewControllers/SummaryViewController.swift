@@ -38,6 +38,7 @@ class SummaryViewController: UIViewController {
             if segue.identifier == "EditLoan" {
                 guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
                 loanDetailVC.loan = loanController.loans[selectedIndexPath.row]
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
         }
     }
