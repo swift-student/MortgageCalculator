@@ -25,13 +25,12 @@ class LoanDetailViewController: UIViewController {
     //MARK: - IBActions
     
     @IBAction func priceOrPaymentSelected(_ sender: UISegmentedControl) {
-        guard let loan = loan else { return }
         if sender.selectedSegmentIndex == 0 {
             priceOrPaymentLabel.text = "Purchase Price:"
-            priceOrPaymentTextField.text = String(loan.purchasePrice ?? 0)
+            priceOrPaymentTextField.text = String(loan?.purchasePrice ?? 0)
         } else {
             priceOrPaymentLabel.text = "Monthly Payment:"
-             priceOrPaymentTextField.text = String(loan.monthlyPayment ?? 0)
+             priceOrPaymentTextField.text = String(loan?.monthlyPayment ?? 0)
         }
     }
     
