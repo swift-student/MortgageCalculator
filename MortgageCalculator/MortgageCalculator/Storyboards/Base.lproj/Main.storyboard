@@ -183,6 +183,7 @@
                                             <outlet property="termLabel" destination="mx5-GC-NLT" id="XFw-xP-9ib"/>
                                             <outlet property="totalInterestLabel" destination="Yh2-l0-hu1" id="ytE-A1-cv5"/>
                                             <outlet property="totalPaymentsLabel" destination="h49-gp-FAH" id="b0q-d8-Qjg"/>
+                                            <segue destination="MKF-9v-8P5" kind="presentation" identifier="EditLoan" id="p76-dC-GDh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -431,4 +432,7 @@
         <image name="plus.rectangle" catalog="system" width="64" height="46"/>
         <image name="text.alignleft" catalog="system" width="64" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="p76-dC-GDh"/>
+    </inferredMetricsTieBreakers>
 </document>

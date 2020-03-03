@@ -30,10 +30,14 @@ class SummaryViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddLoan",
-           let loanDetailVC = segue.destination as? LoanDetailViewController {
+        if let loanDetailVC = segue.destination as? LoanDetailViewController {
             loanDetailVC.loanController = loanController
             loanDetailVC.delegate = self
+            
+            if segue.identifier == "EditLoan" {
+                guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+                loanDetailVC.loan = loanController.loans[selectedIndexPath.row]
+            }
         }
     }
 }
