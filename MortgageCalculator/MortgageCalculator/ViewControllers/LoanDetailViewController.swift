@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol LoanDetailDelegate {
+    func didFinishEditing()
+}
 class LoanDetailViewController: UIViewController {
     
     //MARK: - IBOutlets
@@ -46,6 +49,7 @@ class LoanDetailViewController: UIViewController {
     
     var loan: Loan?
     var loanController: LoanController?
+    var delegate: LoanDetailDelegate?
     
     
     //MARK: - Private
@@ -121,7 +125,7 @@ class LoanDetailViewController: UIViewController {
             loanController?.add(loan: newLoan)
         }
         
-        dismiss(animated: true)
+        delegate?.didFinishEditing()
     }
     
     //MARK: - View Lifecycle

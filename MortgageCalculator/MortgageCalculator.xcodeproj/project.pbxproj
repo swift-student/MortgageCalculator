@@ -24,8 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04183C40240E195F00B2B0FF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		04183C41240E195F00B2B0FF /* LoanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailViewController.swift; sourceTree = "<group>"; };
 		04392C51240D97CA00695665 /* MortgageCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MortgageCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04392C54240D97CA00695665 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04392C56240D97CA00695665 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,15 +53,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04183C3F240E195F00B2B0FF /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				04183C40240E195F00B2B0FF /* SummaryViewController.swift */,
-				04183C41240E195F00B2B0FF /* LoanDetailViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		04392C48240D97CA00695665 = {
 			isa = PBXGroup;
 			children = (
@@ -105,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				04392C5A240D97CA00695665 /* Main.storyboard */,
-				04183C3F240E195F00B2B0FF /* ViewControllers */,
 				04392C76240DB1B600695665 /* Graphs.storyboard */,
 				04392C5F240D97CC00695665 /* LaunchScreen.storyboard */,
 			);

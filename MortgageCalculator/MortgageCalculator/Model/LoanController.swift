@@ -30,6 +30,12 @@ class LoanController {
         saveToPersistentStore()
     }
     
+    func delete(loan: Loan) {
+        guard let index = loans.firstIndex(of: loan) else { return }
+        loans.remove(at: index)
+        saveToPersistentStore()
+    }
+    
     
     //MARK: - Persistence
     
