@@ -1,17 +1,19 @@
 //
-//  SummaryViewController.swift
+//  MortgageTabBarController.swift
 //  MortgageCalculator
 //
-//  Created by Shawn Gee on 3/2/20.
+//  Created by Shawn Gee on 3/3/20.
 //  Copyright © 2020 Swift Student. All rights reserved.
 //
 
 import UIKit
 
-class SummaryViewController: UIViewController {
-
+class MortgageTabBarController: UITabBarController {
+    let loanController = LoanController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
     
