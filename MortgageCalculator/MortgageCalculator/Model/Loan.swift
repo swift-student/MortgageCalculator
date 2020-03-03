@@ -13,7 +13,7 @@ struct Loan: Codable {
     var monthlyPayment: Double?
     var downPayment: Double
     var interestRate: Double // 4.5% == 4.5
-    var term: Double
+    var term: Int
     
     // Calculated variables for convenience
     
@@ -21,11 +21,11 @@ struct Loan: Codable {
         interestRate / 100 / 12 // 4.5% annual == .00375 monthly
     }
     
-    var months: Double {
+    var months: Int {
         term * 12
     }
     
-    init(purchasePrice: Double, downPayment: Double, interestRate: Double, term: Double) {
+    init(purchasePrice: Double, downPayment: Double, interestRate: Double, term: Int) {
         self.purchasePrice = purchasePrice
         self.monthlyPayment = nil
         self.downPayment = downPayment
@@ -33,7 +33,7 @@ struct Loan: Codable {
         self.term = term
     }
     
-    init(monthlyPayment: Double, downPayment: Double, interestRate: Double, term: Double) {
+    init(monthlyPayment: Double, downPayment: Double, interestRate: Double, term: Int) {
         self.purchasePrice = nil
         self.monthlyPayment = monthlyPayment
         self.downPayment = downPayment

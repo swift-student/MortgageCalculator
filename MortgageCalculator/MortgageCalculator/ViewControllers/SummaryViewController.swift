@@ -13,6 +13,8 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let testLoan = Loan(purchasePrice: 200000, downPayment: 20000, interestRate: 5.0, term: 30)
+        print(Calculator.monthlyAmortizationSchedule(forLoan: testLoan))
     }
     
 
