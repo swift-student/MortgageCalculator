@@ -51,24 +51,24 @@ struct BarGraphView: View {
             }.font(.system(size: 20, weight: .semibold))
             
             HStack {
+                Spacer()
                 Circle()
                     .frame(width: 20, height: 20, alignment: .leading)
+                    .foregroundColor(.pink)
                 Text("Loan A")
                     .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.pink)
+                Spacer()
+                Circle()
+                    .frame(width: 20, height: 20, alignment: .leading)
+                    .foregroundColor(.blue)
+                Text("Loan B")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.blue)
                 Spacer()
             }.padding(.top, 12)
                 .padding(.leading, 12)
-                .foregroundColor(.pink)
-            
-            HStack {
-                Circle()
-                    .frame(width: 20, height: 20, alignment: .leading)
-                Text("Loan B")
-                    .font(.system(size: 20, weight: .semibold))
-                Spacer()
-            }.padding(.top, -8)
-                .padding(.leading, 12)
-                .foregroundColor(.blue)
+                
 
         }.padding()
             .foregroundColor(.white)
