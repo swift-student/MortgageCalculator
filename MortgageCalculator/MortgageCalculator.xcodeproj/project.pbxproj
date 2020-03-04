@@ -23,6 +23,7 @@
 		04392C77240DB1B600695665 /* Graphs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04392C76240DB1B600695665 /* Graphs.storyboard */; };
 		04392C7E240DCAAA00695665 /* LoanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7D240DCAA900695665 /* LoanController.swift */; };
 		048C7288240FEA050061266A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C7287240FEA050061266A /* TimelineViewController.swift */; };
+		048C728B241041420061266A /* BarGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C728A241041420061266A /* BarGraphViewModel.swift */; };
 		04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E69AD0240FE86C00D28434 /* UIView+Layout.swift */; };
 		04F67D94240F0A720095D256 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D93240F0A720095D256 /* GradientView.swift */; };
 		04F67D97240F21BD0095D256 /* BarGraphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */; };
@@ -50,6 +51,7 @@
 		04392C76240DB1B600695665 /* Graphs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphs.storyboard; sourceTree = "<group>"; };
 		04392C7D240DCAA900695665 /* LoanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanController.swift; sourceTree = "<group>"; };
 		048C7287240FEA050061266A /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = MortgageCalculator/Graphs/TimelineViewController.swift; sourceTree = SOURCE_ROOT; };
+		048C728A241041420061266A /* BarGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphViewModel.swift; sourceTree = "<group>"; };
 		04E69AD0240FE86C00D28434 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		04F67D93240F0A720095D256 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = MortgageCalculator/Graphs/Timeline/GradientView.swift; sourceTree = SOURCE_ROOT; };
 		04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarGraphCollectionViewCell.swift; path = MortgageCalculator/Graphs/BarGraphCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -148,6 +150,7 @@
 				04F7250D240EF42800A47A62 /* GraphsViewController.swift */,
 				04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */,
 				04F67D9C240FCF5E0095D256 /* BarGraphView.swift */,
+				048C728A241041420061266A /* BarGraphViewModel.swift */,
 				04F67D9A240F224D0095D256 /* Timeline */,
 			);
 			path = Graphs;
@@ -273,6 +276,7 @@
 				04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */,
 				040FD6BE240ED0780018AA42 /* CurrencyExtensions.swift in Sources */,
 				04392C69240D986E00695665 /* Calculator.swift in Sources */,
+				048C728B241041420061266A /* BarGraphViewModel.swift in Sources */,
 				04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */,
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,

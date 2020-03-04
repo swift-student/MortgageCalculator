@@ -8,44 +8,55 @@
 
 import SwiftUI
 
-class BarGraphViewModel: ObservableObject {
-    
-}
-
 struct BarGraphView: View {
     @ObservedObject var viewModel: BarGraphViewModel
-    @State var numSections = 2
     
     var body: some View {
         VStack {
+            
+            // Sections
             HStack {
-                BarGraphSection(title: "Interest")
-                BarGraphSection(title: "Principle")
-                if numSections > 2 {
-                    BarGraphSection(title: "Total")
+                BarGraphSection(
+                    title: viewModel.sections[0].title,
+                    firstValue: viewModel.sections[0].firstValue,
+                    secondValue: viewModel.sections[0].secondValue,
+                    maxValue: viewModel.sections[0].maxValue)
+                if viewModel.sections.count > 1 {
+                    BarGraphSection(
+                        title: viewModel.sections[1].title,
+                        firstValue: viewModel.sections[1].firstValue,
+                        secondValue: viewModel.sections[1].secondValue,
+                        maxValue: viewModel.sections[0].maxValue)
+                }
+                if viewModel.sections.count > 2 {
+                    BarGraphSection(
+                        title: viewModel.sections[2].title,
+                        firstValue: viewModel.sections[2].firstValue,
+                        secondValue: viewModel.sections[2].secondValue,
+                        maxValue: viewModel.sections[0].maxValue)
                 }
             }.font(.system(size: 20, weight: .semibold))
             
+            // Legend
             HStack {
                 Spacer()
                 Circle()
                     .frame(width: 20, height: 20, alignment: .leading)
                     .foregroundColor(.firstColor)
-                Text("Loan A")
+                Text(viewModel.firstKeyName)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.firstColor)
                 Spacer()
                 Circle()
                     .frame(width: 20, height: 20, alignment: .leading)
                     .foregroundColor(.secondColor)
-                Text("Loan B")
+                Text(viewModel.secondKeyName)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.secondColor)
                 Spacer()
             }.padding(.top, 12)
                 .padding(.leading, 12)
-                
-
+            
         }.padding()
             .foregroundColor(.white)
     }
@@ -54,27 +65,40 @@ struct BarGraphView: View {
 struct BarGraphSection: View {
     
     @State var title: String
+    @State var firstValue: Double
+    @State var secondValue: Double?
+    @State var maxValue: Double
     
     var body: some View {
         VStack {
-            Text("Interest")
+            // Title
+            Text(title)
             .font(.system(size: 24, weight: .bold))
+            
+            // Bars
             HStack {
                 Rectangle()
-                    .scale(x: 1, y: 0.3, anchor: .bottom)
+                    .scale(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
                     .padding(8)
                     .foregroundColor(.firstColor)
-                Rectangle()
-                    .scale(x: 1, y: 0.37, anchor: .bottom)
+                if secondValue != nil {
+                    Rectangle()
+                    .scale(x: 1, y: CGFloat(secondValue! / maxValue), anchor: .bottom)
                     .padding(8)
                     .foregroundColor(.secondColor)
+                }
+                
             }.padding(.horizontal, 8)
-            Text("$20,000")
+            
+            // Labels
+            Text(firstValue.currencyString ?? "")
                 .fixedSize()
                 .foregroundColor(.firstColor)
-            Text("$30,000")
+            if secondValue != nil {
+                Text(secondValue!.currencyString ?? "")
                 .fixedSize()
                 .foregroundColor(.secondColor).padding(.top, 4)
+            }
         }
     }
 }
