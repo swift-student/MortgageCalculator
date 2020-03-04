@@ -21,16 +21,29 @@ class TimelineViewController: UIViewController {
     
     //MARK: - Properties
     var delegate: TimelineDelegate?
-    var startDate = Date()
-    var numYears = 30
+    var startDate = Date() {
+        didSet {
+            updateYears()
+        }
+    }
+    var numYears = 30 {
+        didSet {
+            updateYears()
+        }
+    }
     
     
     //MARK: - Private
     
     private var selectedIndex = 0
     
-    lazy private var years: [String] = {
-        var years = [String]()
+    private var horizontalSectionInset: CGFloat = 0
+    private var cellSize = CGSize()
+    
+    private var years = [String]()
+    
+    private func updateYears() {
+        years = []
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
@@ -42,17 +55,15 @@ class TimelineViewController: UIViewController {
                 years.append(String(startYear + i))
             }
         }
-        
-        return years
-    }()
+    }
     
-    private var horizontalSectionInset: CGFloat = 0
-    private var cellSize = CGSize()
     
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateYears()
         
         guard let flowLayout = timelineView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
