@@ -8,20 +8,48 @@
 
 import UIKit
 
+protocol TimelineDelegate {
+    func timelineDidSelectYear(atIndex index: Int)
+}
+
 class TimelineViewController: UIViewController {
+    
+    //MARK: - IBOutlets
     
     @IBOutlet weak var timelineView: UICollectionView!
     
     
-    let years: [String] = {
+    //MARK: - Properties
+    var delegate: TimelineDelegate?
+    var startDate = Date()
+    var numYears = 30
+    
+    
+    //MARK: - Private
+    
+    private var selectedIndex = 0
+    
+    lazy private var years: [String] = {
         var years = [String]()
-        for year in 2020...2050 {
-            years.append(String(year))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        
+        let startYearString = dateFormatter.string(from: startDate)
+        
+        if let startYear = Int(startYearString) {
+            for i in 0..<numYears {
+                years.append(String(startYear + i))
+            }
         }
+        
         return years
     }()
     
     private var horizontalSectionInset: CGFloat = 0
+    private var cellSize = CGSize()
+    
+    //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +59,16 @@ class TimelineViewController: UIViewController {
         timelineView.dataSource = self
         timelineView.delegate = self
         
-        horizontalSectionInset = timelineView.frame.width / 2 - flowLayout.itemSize.width / 2
+        cellSize = flowLayout.itemSize
+        horizontalSectionInset = timelineView.frame.width / 2 - cellSize.width / 2
+        
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: horizontalSectionInset, bottom: 0, right: horizontalSectionInset)
     }
     
 }
+
+
+//MARK: - Collection View Data Source
 
 extension TimelineViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,13 +84,20 @@ extension TimelineViewController: UICollectionViewDataSource {
     }
 }
 
+
+//MARK: - Collection View Delegate
+
 extension TimelineViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var point = scrollView.contentOffset
-        point.x += horizontalSectionInset + 50
+        point.x += horizontalSectionInset + cellSize.width / 2
+        point.y += cellSize.height / 2
         
-        if let currentYear = timelineView.indexPathForItem(at: point) {
-            print(years[currentYear.item])
+        if let indexPath = timelineView.indexPathForItem(at: point) {
+            if indexPath.item != selectedIndex {
+                selectedIndex = indexPath.item
+                delegate?.timelineDidSelectYear(atIndex: selectedIndex)
+            }
         }
     }
     
