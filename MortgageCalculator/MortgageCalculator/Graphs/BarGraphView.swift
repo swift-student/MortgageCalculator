@@ -79,6 +79,6 @@ struct BarGraphView_Previews: PreviewProvider {
     
     static var previews: some View {
         BarGraphView()
-            .previewLayout(.fixed(width: 400, height: 500))
+//            .previewLayout(.fixed(width: 400, height: 500))
     }
 }

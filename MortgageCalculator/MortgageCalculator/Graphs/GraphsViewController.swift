@@ -15,6 +15,7 @@ class GraphsViewController: UIViewController {
         super.viewDidLoad()
         
         graphCollectionView.dataSource = self
+        graphCollectionView.delegate = self
         graphCollectionView.register(BarGraphCollectionViewCell.self, forCellWithReuseIdentifier: "BarGraphCell")
     }
 }
@@ -25,9 +26,16 @@ extension GraphsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(collectionView.frame.size)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BarGraphCell", for: indexPath)
         return cell
     }
     
     
+}
+
+extension GraphsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return graphCollectionView.frame.size
+    }
 }
