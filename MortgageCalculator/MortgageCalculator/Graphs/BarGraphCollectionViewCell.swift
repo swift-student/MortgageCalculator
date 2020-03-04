@@ -10,8 +10,8 @@ import UIKit
 import SwiftUI
 
 class BarGraphCollectionViewCell: UICollectionViewCell {
-    
-    lazy var barGraphView = BarGraphView()
+    var viewModel = BarGraphViewModel()
+    lazy var barGraphView = BarGraphView(viewModel: viewModel)
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)

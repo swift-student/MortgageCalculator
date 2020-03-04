@@ -8,45 +8,21 @@
 
 import SwiftUI
 
+class BarGraphViewModel: ObservableObject {
+    
+}
+
 struct BarGraphView: View {
+    @ObservedObject var viewModel: BarGraphViewModel
+    @State var numSections = 2
+    
     var body: some View {
         VStack {
             HStack {
-                VStack {
-                    Text("Interest")
-                    .font(.system(size: 24, weight: .bold))
-                    HStack {
-                        Rectangle()
-                            .scale(x: 1, y: 0.3, anchor: .bottom)
-                            .padding(8)
-                            .foregroundColor(Color.pink)
-                        Rectangle()
-                            .scale(x: 1, y: 0.37, anchor: .bottom)
-                            .padding(8)
-                            .foregroundColor(Color.blue)
-                    }.padding(.horizontal, 8)
-                    Text("$20,000").foregroundColor(.pink)
-                    Text("$30,000").foregroundColor(.blue).padding(.top, 4)
-                }
-                VStack {
-                    Text("Principle")
-                    .font(.system(size: 24, weight: .bold))
-                    HStack {
-                        Rectangle().padding(8)
-                        Rectangle().padding(8)
-                    }.padding(.horizontal, 8)
-                    Text("$20,000")
-                    Text("$30,000")
-                }
-                VStack {
-                    Text("Total")
-                    .font(.system(size: 24, weight: .bold))
-                    HStack {
-                        Rectangle().padding(8)
-                        Rectangle().padding(8)
-                    }.padding(.horizontal, 8)
-                    Text("$20,000")
-                    Text("$30,000")
+                BarGraphSection(title: "Interest")
+                BarGraphSection(title: "Principle")
+                if numSections > 2 {
+                    BarGraphSection(title: "Total")
                 }
             }.font(.system(size: 20, weight: .semibold))
             
@@ -54,17 +30,17 @@ struct BarGraphView: View {
                 Spacer()
                 Circle()
                     .frame(width: 20, height: 20, alignment: .leading)
-                    .foregroundColor(.pink)
+                    .foregroundColor(.firstColor)
                 Text("Loan A")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.pink)
+                    .foregroundColor(.firstColor)
                 Spacer()
                 Circle()
                     .frame(width: 20, height: 20, alignment: .leading)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.secondColor)
                 Text("Loan B")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.secondColor)
                 Spacer()
             }.padding(.top, 12)
                 .padding(.leading, 12)
@@ -75,10 +51,45 @@ struct BarGraphView: View {
     }
 }
 
+struct BarGraphSection: View {
+    
+    @State var title: String
+    
+    var body: some View {
+        VStack {
+            Text("Interest")
+            .font(.system(size: 24, weight: .bold))
+            HStack {
+                Rectangle()
+                    .scale(x: 1, y: 0.3, anchor: .bottom)
+                    .padding(8)
+                    .foregroundColor(.firstColor)
+                Rectangle()
+                    .scale(x: 1, y: 0.37, anchor: .bottom)
+                    .padding(8)
+                    .foregroundColor(.secondColor)
+            }.padding(.horizontal, 8)
+            Text("$20,000")
+                .fixedSize()
+                .foregroundColor(.firstColor)
+            Text("$30,000")
+                .fixedSize()
+                .foregroundColor(.secondColor).padding(.top, 4)
+        }
+    }
+}
+
 struct BarGraphView_Previews: PreviewProvider {
     
     static var previews: some View {
-        BarGraphView()
-//            .previewLayout(.fixed(width: 400, height: 500))
+        BarGraphView(viewModel: BarGraphViewModel())
+            .previewLayout(.fixed(width: 400, height: 500))
+            .background(Color(white: 0.1))
     }
+}
+
+
+extension Color {
+    static let firstColor = Color(UIColor.systemPink)
+    static let secondColor = Color(UIColor.systemBlue)
 }
