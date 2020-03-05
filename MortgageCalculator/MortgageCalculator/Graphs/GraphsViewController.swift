@@ -34,12 +34,7 @@ class GraphsViewController: UIViewController {
     private var loanASchedule: AmortizationSchedule?
     private var loanBSchedule: AmortizationSchedule?
     
-    private var yearIndex = 0 {
-        didSet {
-            updateTotalsGraph()
-            updateYearlyGraph()
-        }
-    }
+    private var yearIndex = 0
     
     private var totalsBarGraph = BarGraphContainerView()
     
@@ -50,35 +45,77 @@ class GraphsViewController: UIViewController {
         graphScrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
     }
     
-    private func updateTotalsGraph() {
-        // All three of these should use last numbers in case where years don't line up
-        // Get total interest up to current year
-        // Get total principle up to current year
-        // Get balance from current year
+    private func updateGraphs(animated: Bool) {
+        updateTotalsGraph(animated: animated)
+        updateYearlyGraph(animated: animated)
+    }
+    
+    private func updateTotalsGraph(animated: Bool) {
+        var loanATotalInterest = 0.0
+        var loanBTotalInterest = 0.0
         
+        var loanATotalPrinciple = 0.0
+        var loanBTotalPrinciple = 0.0
         
-        
-        
+        var loanABalance = 0.0
+        var loanBBalance = 0.0
         
         // Get maxValue for scale
         // This should be calculated by taking the max of the total interest, and amount financed from each loan
+        var loanAMax = 0.01
+        var loanBMax = 0.01
         
+        if let loanASchedule = loanASchedule {
+            let loanAInterestMax = loanASchedule.map{ $0.interest }.reduce(0, { $0 + $1 })
+            let loanAPrincipleMax = loanASchedule.map{ $0.principle }.reduce(0, { $0 + $1 })
+            loanAMax = max(loanAInterestMax, loanAPrincipleMax)
+            
+            let year = min(yearIndex, loanASchedule.count - 1)
+            let scheduleToYear = loanASchedule[0...year]
+            
+            loanATotalInterest = scheduleToYear.map{ $0.interest }.reduce(0, { $0 + $1 })
+            loanATotalPrinciple = scheduleToYear.map{ $0.principle }.reduce(0, { $0 + $1 })
+            loanABalance = scheduleToYear[year].balance
+        }
+        
+        if let loanBSchedule = loanBSchedule {
+            let loanBInterestMax = loanBSchedule.map{ $0.interest }.reduce(0, { $0 + $1 })
+            let loanBPrincipleMax = loanBSchedule.map{ $0.principle }.reduce(0, { $0 + $1 })
+            loanBMax = max(loanBInterestMax, loanBPrincipleMax)
+            
+            let year = min(yearIndex, loanBSchedule.count - 1)
+            let scheduleToYear = loanBSchedule[0...year]
+            
+            loanBTotalInterest = scheduleToYear.map{ $0.interest }.reduce(0, { $0 + $1 })
+            loanBTotalPrinciple = scheduleToYear.map{ $0.principle }.reduce(0, { $0 + $1 })
+            loanBBalance = scheduleToYear[year].balance
+        }
         
         let vm = totalsBarGraph.viewModel
         
-        vm.sectionOneTitle = "Interest"
+        vm.shouldAnimate = animated
         
+        vm.maxValue = max(loanAMax, loanBMax)
+        
+        vm.numValues = loanController.loans.count
+        
+        vm.sectionOneTitle = "Interest"
+        vm.sectionOneFirstValue = loanATotalInterest
+        vm.sectionOneSecondValue = loanBTotalInterest
         
         vm.sectionTwoTitle = "Principle"
-        
+        vm.sectionTwoFirstValue = loanATotalPrinciple
+        vm.sectionTwoSecondValue = loanBTotalPrinciple
         
         vm.sectionThreeTitle = "Balance"
+        vm.sectionThreeFirstValue = loanABalance
+        vm.sectionThreeSecondValue = loanBBalance
         
         vm.firstKeyName = loanController.loans.first?.name ?? ""
         vm.secondKeyName = loanController.loans.element(atIndex: 1)?.name ?? ""
     }
     
-    private func updateYearlyGraph() {
+    private func updateYearlyGraph(animated: Bool) {
         var loanAData = AmortizationData.empty
         var loanBData = AmortizationData.empty
         
@@ -94,6 +131,8 @@ class GraphsViewController: UIViewController {
         }
         
         let vm = yearlyBarGraph.viewModel
+        
+        vm.shouldAnimate = animated
         
         vm.maxValue = loanController.loans
             .map{ Calculator.monthlyPayment(forLoan: $0 ) * 12 }
@@ -120,14 +159,13 @@ class GraphsViewController: UIViewController {
             loanASchedule = nil
             /// We don't have any loans to display
         }
-        if loanController.loans.count > 1, let loanB = loanController.loans.last {
+        if let loanB = loanController.loans.element(atIndex: 1) {
             loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
         } else {
             loanBSchedule = nil
         }
         
-        updateYearlyGraph()
-        updateTotalsGraph()
+        updateGraphs(animated: false)
     }
     
     //MARK: - View Lifecycle
@@ -179,7 +217,7 @@ extension GraphsViewController: UIScrollViewDelegate {
 extension GraphsViewController: TimelineDelegate {
     func timelineDidSelectYear(atIndex index: Int) {
         yearIndex = index
-        yearlyBarGraph.viewModel.shouldAnimate = true
+        updateGraphs(animated: true)
     }
 }
 
