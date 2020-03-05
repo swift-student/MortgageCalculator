@@ -8,39 +8,7 @@
 
 import SwiftUI
 
-class RingGraphViewModel: ObservableObject {
-    @Published var title = "Principle"
-    
-    @Published var firstRingName = "Loan A"
-    @Published var firstRingValue: Double = 100 {
-        didSet {
-            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
-        }
-    }
-    @Published var firstRingMaxValue: Double = 1000 {
-        didSet {
-            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
-        }
-    }
-    
-    @Published var firstRingProgress: CGFloat = 0.0
-    
-    
-    @Published var secondRingName = "Loan B"
-    @Published var secondRingValue: Double = 100 {
-        didSet {
-            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
-        }
-    }
-    @Published var secondRingMaxValue: Double = 1000 {
-        didSet {
-            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
-        }
-    }
-    
-    @Published var secondRingProgress: CGFloat = 0.0
 
-}
 
 struct RingGraphView: View {
     @ObservedObject var viewModel: RingGraphViewModel
@@ -64,10 +32,11 @@ struct RingGraphView: View {
                             .font(.system(size: 24, weight: .bold))
                         Ring(startColor: Color(#colorLiteral(red: 0.8684985017, green: 0.6158105232, blue: 1, alpha: 1)),
                              endColor: Color(.systemPink),
-                             progress: $viewModel.firstRingProgress)
+                             progress: $viewModel.firstRingProgress,
+                             shouldAnimate: $viewModel.shouldAnimate)
                             .padding()
                         Text("\(viewModel.firstRingValue.currencyString ?? "") / \(viewModel.firstRingMaxValue.currencyString ?? "")")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.system(size: 14, weight: .bold))
                             .fixedSize()
                             .padding(.top, 10)
                     }
@@ -82,10 +51,11 @@ struct RingGraphView: View {
                             .font(.system(size: 24, weight: .bold))
                         Ring(startColor: Color(#colorLiteral(red: 0.7489833048, green: 1, blue: 1, alpha: 1)),
                              endColor: Color(.systemBlue),
-                             progress: $viewModel.secondRingProgress)
+                             progress: $viewModel.secondRingProgress,
+                             shouldAnimate: $viewModel.shouldAnimate)
                             .padding()
                         Text("\(viewModel.secondRingValue.currencyString ?? "") / \(viewModel.secondRingMaxValue.currencyString ?? "")")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.system(size: 14, weight: .bold))
                             .fixedSize()
                             .padding(.top, 10)
                     }
@@ -106,31 +76,32 @@ struct Ring: View {
     @State var startColor: Color
     @State var endColor: Color
     @Binding var progress: CGFloat
+    @Binding var shouldAnimate: Bool
     
     var body: some View {
         ZStack {
             Circle()
-                .stroke(Color(.black), style: .init(lineWidth: 15))
+                .stroke(Color.black.opacity(0.3), style: .init(lineWidth: 18))
             Circle()
                 .trim(from: 0, to: progress < 1 ? progress * 0.95 : progress)
                 .stroke(
-                    AngularGradient(
+                    RadialGradient(
                         gradient: Gradient(colors: [
-                            progress < 1 ? startColor : endColor,
-                            endColor,
+                            startColor,
                             endColor,
                         ]),
                         center: .center,
-                        angle: Angle(degrees: -8)),
-                    style: .init(lineWidth: 15, lineCap: .round)
+                        startRadius: 30,
+                        endRadius: 55),
+                    style: .init(lineWidth: 18, lineCap: .round)
                 )
                 .rotationEffect(Angle(degrees: -85))
                 .shadow(color: endColor.opacity(0.3), radius: 3, x: -3, y: 3)
-                .animation(.easeOut(duration: 0.8))
+                .animation( shouldAnimate ? .easeOut(duration: 0.8) : .none)
                 
             Text(String(format: "%.0f", Double(progress * 100).rounded(.down)) + "%")
                 .font(.system(size: 18, weight: .heavy))
-        }.frame(width: 100, height: 100)
+        }.frame(width: 120, height: 120)
     }
 }
 

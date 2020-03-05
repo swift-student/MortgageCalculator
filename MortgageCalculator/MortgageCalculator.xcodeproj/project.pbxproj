@@ -24,6 +24,8 @@
 		04392C75240DB13A00695665 /* Amortization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C74240DB13A00695665 /* Amortization.swift */; };
 		04392C77240DB1B600695665 /* Graphs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04392C76240DB1B600695665 /* Graphs.storyboard */; };
 		04392C7E240DCAAA00695665 /* LoanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7D240DCAA900695665 /* LoanController.swift */; };
+		044CA3802411C21400DE858F /* RingGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CA37F2411C21400DE858F /* RingGraphViewModel.swift */; };
+		044CA3822411C5DB00DE858F /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CA3812411C5DB00DE858F /* Array+.swift */; };
 		048C7288240FEA050061266A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C7287240FEA050061266A /* TimelineViewController.swift */; };
 		048C728B241041420061266A /* BarGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C728A241041420061266A /* BarGraphViewModel.swift */; };
 		04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E69AD0240FE86C00D28434 /* UIView+Layout.swift */; };
@@ -54,6 +56,8 @@
 		04392C74240DB13A00695665 /* Amortization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amortization.swift; sourceTree = "<group>"; };
 		04392C76240DB1B600695665 /* Graphs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphs.storyboard; sourceTree = "<group>"; };
 		04392C7D240DCAA900695665 /* LoanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanController.swift; sourceTree = "<group>"; };
+		044CA37F2411C21400DE858F /* RingGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingGraphViewModel.swift; sourceTree = "<group>"; };
+		044CA3812411C5DB00DE858F /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		048C7287240FEA050061266A /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = MortgageCalculator/Graphs/TimelineViewController.swift; sourceTree = SOURCE_ROOT; };
 		048C728A241041420061266A /* BarGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphViewModel.swift; sourceTree = "<group>"; };
 		04E69AD0240FE86C00D28434 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			children = (
 				0435F0AE24119D3000B285BB /* RingGraphContainerView.swift */,
 				0435F0AA241181E200B285BB /* RingGraphView.swift */,
+				044CA37F2411C21400DE858F /* RingGraphViewModel.swift */,
 			);
 			path = RingGraph;
 			sourceTree = "<group>";
@@ -105,12 +110,12 @@
 			children = (
 				04E69AD3240FE88C00D28434 /* Extensions */,
 				040FD6BB240EC6500018AA42 /* MortgageTabBarController.swift */,
-				04F67D99240F21E50095D256 /* Graphs */,
 				04392C5A240D97CA00695665 /* Main.storyboard */,
 				04392C70240DA07800695665 /* Summary */,
 				04F67D9B240F22F70095D256 /* LoanDetail */,
-				04392C72240DA09800695665 /* Resources */,
+				04F67D99240F21E50095D256 /* Graphs */,
 				04392C73240DA10D00695665 /* Model */,
+				04392C72240DA09800695665 /* Resources */,
 			);
 			path = MortgageCalculator;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				04E69AD0240FE86C00D28434 /* UIView+Layout.swift */,
+				044CA3812411C5DB00DE858F /* Array+.swift */,
 				040FD6BD240ED0780018AA42 /* CurrencyExtensions.swift */,
 			);
 			path = Extensions;
@@ -291,6 +297,7 @@
 			files = (
 				040FD6BA240EBED70018AA42 /* LoanSummaryTableViewCell.swift in Sources */,
 				04392C6B240D988A00695665 /* Loan.swift in Sources */,
+				044CA3822411C5DB00DE858F /* Array+.swift in Sources */,
 				04F67D97240F21BD0095D256 /* BarGraphContainerView.swift in Sources */,
 				04F67D94240F0A720095D256 /* GradientView.swift in Sources */,
 				04F72510240EF8F800A47A62 /* YearCell.swift in Sources */,
@@ -302,6 +309,7 @@
 				048C728B241041420061266A /* BarGraphViewModel.swift in Sources */,
 				04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */,
 				0435F0AB241181E200B285BB /* RingGraphView.swift in Sources */,
+				044CA3802411C21400DE858F /* RingGraphViewModel.swift in Sources */,
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,
 				040FD6BC240EC6500018AA42 /* MortgageTabBarController.swift in Sources */,

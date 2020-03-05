@@ -123,25 +123,39 @@ struct BarGraphSection: View {
             
             // Bars
             HStack {
-                Rectangle()
-                    .cornerRadius(4.0)
-                    .scaleEffect(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
-                    .cornerRadius(4.0)
-                    .animation(shouldAnimate ? .easeInOut(duration: 0.8) : .none)
-                    .frame(maxWidth: 40)
-                    .padding(8)
-                    .foregroundColor(.firstColor)
-                    
-                    
-                if numValues > 1 {
-                    Rectangle()
+                if numValues > 0 {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(Color.black.opacity(0.3))
+                            .cornerRadius(4.0)
+                        
+                        Rectangle()
                         .cornerRadius(4.0)
-                        .scaleEffect(x: 1, y: CGFloat(secondValue / maxValue), anchor: .bottom)
+                        .scaleEffect(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
                         .cornerRadius(4.0)
-                        .animation(shouldAnimate ? .easeInOut(duration: 0.8) : .none)
-                        .frame(maxWidth: 40)
+                        .foregroundColor(.firstColor)
+                            .animation(shouldAnimate ? .easeInOut(duration: 0.8) : .none)
+                            .shadow(color: Color.firstColor.opacity(0.3), radius: 3, x: -3, y: 3)
+                        
+                    }.frame(maxWidth: 40)
                         .padding(8)
-                        .foregroundColor(.secondColor)
+                }
+                
+                if numValues > 1 {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(Color.black.opacity(0.3))
+                            .cornerRadius(4.0)
+                        Rectangle()
+                            .cornerRadius(4.0)
+                            .scaleEffect(x: 1, y: CGFloat(secondValue / maxValue), anchor: .bottom)
+                            .cornerRadius(4.0)
+                            .foregroundColor(.secondColor)
+                            .animation(shouldAnimate ? .easeInOut(duration: 0.8) : .none)
+                            .shadow(color: Color.secondColor.opacity(0.3), radius: 3, x: -3, y: 3)
+                        
+                    }.frame(maxWidth: 40)
+                        .padding(8)
                 }
                 
             }.padding(.horizontal, 8)

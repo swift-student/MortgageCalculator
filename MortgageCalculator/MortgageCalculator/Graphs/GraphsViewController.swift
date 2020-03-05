@@ -31,6 +31,13 @@ class GraphsViewController: UIViewController {
     
     //MARK: - Private
     
+    private var timelineVC: TimelineViewController {
+        guard let timelineVC = children.first as? TimelineViewController else  {
+          fatalError("Check storyboard for missing TimelineViewController")
+        }
+        return timelineVC
+    }
+    
     private var loanASchedule: AmortizationSchedule?
     private var loanBSchedule: AmortizationSchedule?
     
@@ -45,10 +52,13 @@ class GraphsViewController: UIViewController {
         graphScrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
     }
     
+    
+    //MARK: - Updates
+    
     private func updateGraphs(animated: Bool) {
         updateTotalsGraph(animated: animated)
         updateYearlyGraph(animated: animated)
-        updateProgressRingGraph()
+        updateProgressRingGraph(animated: animated)
     }
     
     private func updateTotalsGraph(animated: Bool) {
@@ -61,7 +71,6 @@ class GraphsViewController: UIViewController {
         var loanABalance = 0.0
         var loanBBalance = 0.0
         
-        // max value calculated by taking the max of the total interest, and amount financed from each loan
         var loanAMax = 0.01
         var loanBMax = 0.01
         
@@ -155,14 +164,10 @@ class GraphsViewController: UIViewController {
         vm.secondKeyName = loanController.loans.element(atIndex: 1)?.name ?? ""
     }
     
-    func updateProgressRingGraph() {
-        
-        
-        // Get amount financed
+    func updateProgressRingGraph(animated: Bool) {
         var loanAAmountFinanced = 0.1
         var loanBAmountFinanced = 0.1
         
-        // Get amount paid off
         var loanAPrinciplePaid = 0.0
         var loanBPrinciplePaid = 0.0
         
@@ -183,6 +188,8 @@ class GraphsViewController: UIViewController {
         }
         
         let vm = progressRingGraph.viewModel
+        
+        vm.shouldAnimate = animated
         
         vm.firstRingName = loanController.loans.first?.name ?? ""
         vm.firstRingValue = loanAPrinciplePaid
@@ -214,45 +221,45 @@ class GraphsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let timelineVC = children.first as? TimelineViewController else  {
-          fatalError("Check storyboard for missing TimelineViewController")
-        }
-        
         timelineVC.delegate = self
         
+        setupGraphScrollView()
+        setupGraphSelector()
+    }
+    
+    func setupGraphScrollView() {
         graphScrollView.delegate = self
         
         graphScrollContentView.addSubview(totalsBarGraph)
         graphScrollContentView.addSubview(yearlyBarGraph)
         graphScrollContentView.addSubview(progressRingGraph)
+    }
+    
+    func setupGraphSelector() {
         graphSelector.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
         graphSelector.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        
-//        updateSchedules()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let timelineVC = children.first as? TimelineViewController else  {
-          fatalError("Check storyboard for missing TimelineViewController")
-        }
-        
         timelineVC.numYears = loanController.loans.map{ $0.term }.reduce(1, { max($0, $1) })
-        
-        yearlyBarGraph.viewModel.shouldAnimate = false
         updateLoanSchedules()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        layoutGraphScrollView()
+    }
+    
+    func layoutGraphScrollView() {
         graphScrollContentWidth.constant = graphScrollView.frame.width * 3
         totalsBarGraph.frame = CGRect(origin: graphScrollContentView.bounds.origin, size: graphScrollView.frame.size)
         yearlyBarGraph.frame = CGRect(origin: CGPoint(x: totalsBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
         progressRingGraph.frame = CGRect(origin: CGPoint(x: yearlyBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
     }
 }
+
 
 //MARK: - Scroll View Delegate
 
@@ -269,12 +276,5 @@ extension GraphsViewController: TimelineDelegate {
     func timelineDidSelectYear(atIndex index: Int) {
         yearIndex = index
         updateGraphs(animated: true)
-    }
-}
-
-
-extension Array {
-    func element(atIndex index: Int) -> Element? {
-        return count > index ? self[index] : nil
     }
 }
