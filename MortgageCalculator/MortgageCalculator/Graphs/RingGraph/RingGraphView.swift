@@ -9,7 +9,37 @@
 import SwiftUI
 
 class RingGraphViewModel: ObservableObject {
+    @Published var title = "Principle"
     
+    @Published var firstRingName = "Loan A"
+    @Published var firstRingValue: Double = 100 {
+        didSet {
+            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
+        }
+    }
+    @Published var firstRingMaxValue: Double = 1000 {
+        didSet {
+            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
+        }
+    }
+    
+    @Published var firstRingProgress: CGFloat = 0.0
+    
+    
+    @Published var secondRingName = "Loan B"
+    @Published var secondRingValue: Double = 100 {
+        didSet {
+            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
+        }
+    }
+    @Published var secondRingMaxValue: Double = 1000 {
+        didSet {
+            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
+        }
+    }
+    
+    @Published var secondRingProgress: CGFloat = 0.0
+
 }
 
 struct RingGraphView: View {
@@ -27,28 +57,38 @@ struct RingGraphView: View {
                 
                 Spacer()
                 
-                VStack {
-                    Text("Loan A")
-                        .foregroundColor(.pink)
-                        .font(.system(size: 24, weight: .bold))
-                    Ring(startColor: Color(#colorLiteral(red: 0.8684985017, green: 0.6158105232, blue: 1, alpha: 1)), endColor: Color(.systemPink), progress: 1)
-                        .padding()
-                    Text("$100,000 / $100,000")
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.top, 10)
+                if viewModel.firstRingName != "" {
+                    VStack {
+                        Text(viewModel.firstRingName)
+                            .foregroundColor(.pink)
+                            .font(.system(size: 24, weight: .bold))
+                        Ring(startColor: Color(#colorLiteral(red: 0.8684985017, green: 0.6158105232, blue: 1, alpha: 1)),
+                             endColor: Color(.systemPink),
+                             progress: $viewModel.firstRingProgress)
+                            .padding()
+                        Text("\(viewModel.firstRingValue.currencyString ?? "") / \(viewModel.firstRingMaxValue.currencyString ?? "")")
+                            .font(.system(size: 12, weight: .bold))
+                            .fixedSize()
+                            .padding(.top, 10)
+                    }
                 }
                 
-                Spacer()
-                
-                VStack {
-                    Text("Loan B")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 24, weight: .bold))
-                    Ring(startColor: Color(#colorLiteral(red: 0.7489833048, green: 1, blue: 1, alpha: 1)), endColor: Color(.systemBlue), progress: 0.87)
-                        .padding()
-                    Text("$87,000 / $100,000")
-                    .font(.system(size: 12, weight: .bold))
-                    .padding(.top, 10)
+                if viewModel.secondRingName != "" {
+                    Spacer()
+                    
+                    VStack {
+                        Text(viewModel.secondRingName)
+                            .foregroundColor(.blue)
+                            .font(.system(size: 24, weight: .bold))
+                        Ring(startColor: Color(#colorLiteral(red: 0.7489833048, green: 1, blue: 1, alpha: 1)),
+                             endColor: Color(.systemBlue),
+                             progress: $viewModel.secondRingProgress)
+                            .padding()
+                        Text("\(viewModel.secondRingValue.currencyString ?? "") / \(viewModel.secondRingMaxValue.currencyString ?? "")")
+                            .font(.system(size: 12, weight: .bold))
+                            .fixedSize()
+                            .padding(.top, 10)
+                    }
                 }
             
                 Spacer()
@@ -65,7 +105,7 @@ struct RingGraphView: View {
 struct Ring: View {
     @State var startColor: Color
     @State var endColor: Color
-    @State var progress: CGFloat
+    @Binding var progress: CGFloat
     
     var body: some View {
         ZStack {
@@ -78,14 +118,15 @@ struct Ring: View {
                         gradient: Gradient(colors: [
                             progress < 1 ? startColor : endColor,
                             endColor,
+                            endColor,
                         ]),
                         center: .center,
                         angle: Angle(degrees: -8)),
                     style: .init(lineWidth: 15, lineCap: .round)
                 )
-                
                 .rotationEffect(Angle(degrees: -85))
                 .shadow(color: endColor.opacity(0.3), radius: 3, x: -3, y: 3)
+                .animation(.easeOut(duration: 0.8))
                 
             Text(String(format: "%.0f", Double(progress * 100).rounded(.down)) + "%")
                 .font(.system(size: 18, weight: .heavy))
