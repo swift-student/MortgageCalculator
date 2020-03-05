@@ -16,49 +16,70 @@ struct BarGraphView: View {
             
             // Sections
             HStack {
-                BarGraphSection(
-                    title: $viewModel.sectionOneTitle,
-                    firstValue: $viewModel.sectionOneFirstValue,
-                    secondValue: $viewModel.sectionOneSecondValue ,
-                    maxValue: $viewModel.maxValue,
-                    shouldAnimate: $viewModel.shouldAnimate)
-                    .padding(.horizontal, 20)
-                if viewModel.numSections > 1 {
+                Spacer()
+                
+                if viewModel.sectionOneTitle != "" {
+                    BarGraphSection(
+                        title: $viewModel.sectionOneTitle,
+                        firstValue: $viewModel.sectionOneFirstValue,
+                        secondValue: $viewModel.sectionOneSecondValue ,
+                        maxValue: $viewModel.maxValue,
+                        numValues: $viewModel.numValues,
+                        shouldAnimate: $viewModel.shouldAnimate)
+                }
+                
+                if viewModel.sectionTwoTitle != "" {
+                    Spacer()
+                    
                     BarGraphSection(
                         title: $viewModel.sectionTwoTitle,
                         firstValue: $viewModel.sectionTwoFirstValue,
                         secondValue: $viewModel.sectionTwoSecondValue,
                         maxValue: $viewModel.maxValue,
+                        numValues: $viewModel.numValues,
                         shouldAnimate: $viewModel.shouldAnimate)
-                        .padding(.horizontal, 20)
                 }
-                if viewModel.numSections > 2 {
+                
+                if viewModel.sectionThreeTitle != "" {
+                    Spacer()
+                    
                     BarGraphSection(
                         title: $viewModel.sectionThreeTitle,
                         firstValue: $viewModel.sectionThreeFirstValue,
                         secondValue: $viewModel.sectionThreeSecondValue,
                         maxValue: $viewModel.maxValue,
+                        numValues: $viewModel.numValues,
                         shouldAnimate: $viewModel.shouldAnimate)
-                        .padding(.horizontal, 20)
                 }
+                
+                Spacer()
             }.font(.system(size: 20, weight: .semibold))
             
             // Legend
             HStack {
                 Spacer()
-                Circle()
-                    .frame(width: 20, height: 20, alignment: .leading)
-                    .foregroundColor(.firstColor)
-                Text(viewModel.firstKeyName)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.firstColor)
-                Spacer()
-                Circle()
-                    .frame(width: 20, height: 20, alignment: .leading)
-                    .foregroundColor(.secondColor)
-                Text(viewModel.secondKeyName)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.secondColor)
+                
+                if viewModel.firstKeyName != "" {
+                    Circle()
+                        .frame(width: 20, height: 20, alignment: .leading)
+                        .foregroundColor(.firstColor)
+                    Text(viewModel.firstKeyName)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.firstColor)
+                    
+                }
+                
+                if viewModel.secondKeyName != "" {
+                    Spacer()
+                    
+                    Circle()
+                        .frame(width: 20, height: 20, alignment: .leading)
+                        .foregroundColor(.secondColor)
+                    Text(viewModel.secondKeyName)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.secondColor)
+                }
+                
                 Spacer()
             }.padding(.top, 12)
                 .padding(.leading, 12)
@@ -75,8 +96,9 @@ struct BarGraphSection: View {
     
     @Binding var title: String
     @Binding var firstValue: Double
-    @Binding var secondValue: Double?
+    @Binding var secondValue: Double
     @Binding var maxValue: Double
+    @Binding var numValues: Int
     
     @Binding var shouldAnimate: Bool
     
@@ -96,9 +118,9 @@ struct BarGraphSection: View {
                     .foregroundColor(.firstColor)
                     
                     
-                if secondValue != nil {
+                if numValues > 1 {
                     Rectangle()
-                        .scale(x: 1, y: CGFloat(secondValue! / maxValue), anchor: .bottom)
+                        .scale(x: 1, y: CGFloat(secondValue / maxValue), anchor: .bottom)
                         .animation(shouldAnimate ? .easeInOut : .none)
                         .frame(maxWidth: 40)
                         .padding(8)
@@ -108,11 +130,15 @@ struct BarGraphSection: View {
             }.padding(.horizontal, 8)
             
             // Labels
-            Text(firstValue.currencyString ?? "")
+            if numValues > 0 {
+                Text(firstValue.currencyString ?? "")
                 .fixedSize()
                 .foregroundColor(.firstColor)
-            if secondValue != nil {
-                Text(secondValue!.currencyString ?? "")
+            }
+            
+            
+            if numValues > 1 {
+                Text(secondValue.currencyString ?? "")
                     .fixedSize()
                     .foregroundColor(.secondColor).padding(.top, 4)
             }

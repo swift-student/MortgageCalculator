@@ -11,6 +11,8 @@ import Foundation
 struct Loan: Codable, Identifiable, Equatable {
     let id = UUID()
     
+    var name: String = "Loan A"
+    
     var purchasePrice: Double?
     var monthlyPayment: Double?
     var downPayment: Double

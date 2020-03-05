@@ -62,20 +62,17 @@ class GraphsViewController: UIViewController {
       
         
         if let loanBSchedule = loanBSchedule,
-        yearIndex < loanBSchedule.count {
+            yearIndex < loanBSchedule.count {
             loanBData = loanBSchedule[min(yearIndex, loanBSchedule.count - 1)]
         }
         
-        
-        
         let vm = yearlyBarGraph.viewModel
-        
         
         vm.maxValue = loanController.loans
             .map{ Calculator.monthlyPayment(forLoan: $0 ) * 12 }
             .reduce( 0.01 , { max($0, $1) })
         
-        vm.numSections = 2
+        vm.numValues = loanController.loans.count
         
         vm.sectionOneTitle = "Interest"
         vm.sectionOneFirstValue = loanAData.interest
@@ -84,12 +81,16 @@ class GraphsViewController: UIViewController {
         vm.sectionTwoTitle = "Principle"
         vm.sectionTwoFirstValue = loanAData.principle
         vm.sectionTwoSecondValue = loanBData.principle
+        
+        vm.firstKeyName = loanController.loans.first?.name ?? ""
+        vm.secondKeyName = loanController.loans.element(atIndex: 1)?.name ?? ""
     }
     
     func updateViews() {
         if let loanA = loanController.loans.first {
             loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
         } else {
+            loanASchedule = nil
             /// We don't have any loans to display
         }
         if loanController.loans.count > 1, let loanB = loanController.loans.last {
@@ -133,5 +134,12 @@ extension GraphsViewController: TimelineDelegate {
     func timelineDidSelectYear(atIndex index: Int) {
         yearIndex = index
         yearlyBarGraph.viewModel.shouldAnimate = true
+    }
+}
+
+
+extension Array {
+    func element(atIndex index: Int) -> Element? {
+        return count > index ? self[index] : nil
     }
 }

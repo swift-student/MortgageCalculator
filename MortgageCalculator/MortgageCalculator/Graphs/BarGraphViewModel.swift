@@ -9,21 +9,21 @@
 import Foundation
 
 class BarGraphViewModel: ObservableObject {
-    @Published var numSections = 1
+    @Published var numValues = 0
     
     @Published var shouldAnimate = false
     
-    @Published var sectionOneTitle: String = "Interest"
-    @Published var sectionOneFirstValue: Double = 300
-    @Published var sectionOneSecondValue: Double?
+    @Published var sectionOneTitle: String = ""
+    @Published var sectionOneFirstValue: Double = 100
+    @Published var sectionOneSecondValue: Double = 100
     
-    @Published var sectionTwoTitle: String = "Principle"
-    @Published var sectionTwoFirstValue: Double = 300
-    @Published var sectionTwoSecondValue: Double?
+    @Published var sectionTwoTitle: String = ""
+    @Published var sectionTwoFirstValue: Double = 100
+    @Published var sectionTwoSecondValue: Double = 100
     
-    @Published var sectionThreeTitle: String = "Total"
-    @Published var sectionThreeFirstValue: Double = 300
-    @Published var sectionThreeSecondValue: Double?
+    @Published var sectionThreeTitle: String = ""
+    @Published var sectionThreeFirstValue: Double = 100
+    @Published var sectionThreeSecondValue: Double = 100
     
     @Published var maxValue: Double = 1000
     
