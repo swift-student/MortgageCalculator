@@ -30,11 +30,7 @@ class SummaryViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        // Do any additional setup after loading the view.
-        let testLoan = Loan(purchasePrice: 200000, downPayment: 20000, interestRate: 5.0, term: 30)
-        print(Calculator.monthlyAmortizationSchedule(forLoan: testLoan))
     }
-    
     
     
     // MARK: - Navigation
@@ -48,6 +44,13 @@ class SummaryViewController: UIViewController {
                 guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
                 loanDetailVC.loan = loanController.loans[selectedIndexPath.row]
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+            
+            if segue.identifier == "AddLoan" {
+                if loanController.loans.count == 1 {
+                    let firstLoanName = loanController.loans[0].name
+                    loanDetailVC.defaultLoanName = firstLoanName != "Loan B" ? "Loan B" : "Loan A"
+                }
             }
         }
     }
@@ -74,6 +77,8 @@ extension SummaryViewController: UITableViewDataSource {
         }
         
         cell.loan = loanController.loans[indexPath.row]
+        cell.color = indexPath.row == 0 ? .systemPink : .systemBlue
+        
         return cell
     }
     

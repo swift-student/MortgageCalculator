@@ -14,4 +14,6 @@ struct AmortizationData {
     let interest: Double
     let principle: Double
     let balance: Double
+    
+    static var empty = AmortizationData(interest: 0, principle: 0, balance: 0)
 }

@@ -1,29 +1,30 @@
 //
-//  BarGraphCollectionViewCell.swift
+//  RingGraphContainerView.swift
 //  MortgageCalculator
 //
-//  Created by Shawn Gee on 3/3/20.
+//  Created by Shawn Gee on 3/5/20.
 //  Copyright © 2020 Swift Student. All rights reserved.
 //
+
+import Foundation
 
 import UIKit
 import SwiftUI
 
-class BarGraphContainerView: UIView {
+class RingGraphContainerView: UIView {
     
-    let viewModel = BarGraphViewModel()
+    let viewModel = RingGraphViewModel()
     
-    private lazy var barGraphView = BarGraphView(viewModel: viewModel)
+    private lazy var ringGraphView = RingGraphView(viewModel: viewModel)
     
-    var hostingController: UIHostingController<BarGraphView>?
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         
         backgroundColor = .clear
-        hostingController = UIHostingController(rootView: barGraphView)
         
-        guard let hostingController = hostingController else { return }
+        let hostingController = UIHostingController(rootView: ringGraphView)
+        
         addSubview(hostingController.view)
         hostingController.view.backgroundColor = .clear
         hostingController.view.fillSuperview()

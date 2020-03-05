@@ -18,16 +18,17 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rug-vH-0yX">
                                 <rect key="frame" x="67" y="617" width="280" height="41"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5970141267123289" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1Ic-0Q-TWY"/>
                                     <constraint firstAttribute="width" constant="280" id="bTM-eY-bCV"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Total"/>
+                                    <segment title="Totals"/>
                                     <segment title="Yearly"/>
                                     <segment title="Progress"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="selectedGraph:" destination="O85-OP-m8H" eventType="valueChanged" id="bRn-HZ-eas"/>
                                 </connections>
@@ -41,12 +42,15 @@
                                     <segue destination="isu-E5-Vdj" kind="embed" id="2aI-QS-9Me"/>
                                 </connections>
                             </containerView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVO-wP-uat">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVO-wP-uat">
                                 <rect key="frame" x="0.0" y="64" width="414" height="513"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufG-0b-FEQ" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="414" id="fLe-nk-11T"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -55,7 +59,6 @@
                                     <constraint firstItem="ufG-0b-FEQ" firstAttribute="height" secondItem="RXg-7q-Afq" secondAttribute="height" id="RnP-yy-6OF"/>
                                     <constraint firstItem="ufG-0b-FEQ" firstAttribute="top" secondItem="8jR-Bz-mxv" secondAttribute="top" id="SkS-pD-8Mz"/>
                                     <constraint firstItem="ufG-0b-FEQ" firstAttribute="bottom" secondItem="8jR-Bz-mxv" secondAttribute="bottom" id="oWb-O6-WBh"/>
-                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="width" secondItem="RXg-7q-Afq" secondAttribute="width" id="vL6-XF-lZR"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="8jR-Bz-mxv"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RXg-7q-Afq"/>
@@ -79,6 +82,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="graphScrollContentView" destination="ufG-0b-FEQ" id="iqe-DM-TAx"/>
+                        <outlet property="graphScrollContentWidth" destination="fLe-nk-11T" id="7cW-zq-N7O"/>
                         <outlet property="graphScrollView" destination="dVO-wP-uat" id="KYW-gg-7zA"/>
                         <outlet property="graphSelector" destination="rug-vH-0yX" id="HII-Us-Y0h"/>
                     </connections>
@@ -97,7 +101,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I6n-L6-yHA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DSg-cl-lJ0">
                                     <size key="itemSize" width="100" height="56"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -115,7 +119,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFs-It-vMc">
                                                     <rect key="frame" x="25" y="16" width="50.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-Ol-ogU" userLabel="Left Separator">
@@ -209,6 +213,7 @@
                             <constraint firstItem="I6n-L6-yHA" firstAttribute="leading" secondItem="Xqy-Fz-Y74" secondAttribute="leading" id="rYG-pW-CiK"/>
                             <constraint firstAttribute="bottom" secondItem="eGI-tg-U5p" secondAttribute="bottom" id="t0C-Q6-428"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fcH-KE-sP8"/>
                     </view>
                     <connections>
                         <outlet property="timelineView" destination="I6n-L6-yHA" id="1hv-F8-FwE"/>
