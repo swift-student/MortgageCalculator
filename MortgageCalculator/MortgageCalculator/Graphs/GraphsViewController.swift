@@ -51,7 +51,31 @@ class GraphsViewController: UIViewController {
     }
     
     private func updateTotalsGraph() {
+        // All three of these should use last numbers in case where years don't line up
+        // Get total interest up to current year
+        // Get total principle up to current year
+        // Get balance from current year
         
+        
+        
+        
+        
+        // Get maxValue for scale
+        // This should be calculated by taking the max of the total interest, and amount financed from each loan
+        
+        
+        let vm = totalsBarGraph.viewModel
+        
+        vm.sectionOneTitle = "Interest"
+        
+        
+        vm.sectionTwoTitle = "Principle"
+        
+        
+        vm.sectionThreeTitle = "Balance"
+        
+        vm.firstKeyName = loanController.loans.first?.name ?? ""
+        vm.secondKeyName = loanController.loans.element(atIndex: 1)?.name ?? ""
     }
     
     private func updateYearlyGraph() {

@@ -55,6 +55,17 @@ struct BarGraphView: View {
                 Spacer()
             }.font(.system(size: 20, weight: .semibold))
             
+            Divider()
+                .background(LinearGradient(
+                    gradient: Gradient(stops: [
+                        Gradient.Stop.init(color: .clear, location: 0.0),
+                        Gradient.Stop.init(color: .white, location: 0.1),
+                        Gradient.Stop.init(color: .white, location: 0.9),
+                        Gradient.Stop.init(color: .clear, location: 1.0),
+                    ]),
+                    startPoint: .leading,
+                    endPoint: .trailing))
+            
             // Legend
             HStack {
                 Spacer()
