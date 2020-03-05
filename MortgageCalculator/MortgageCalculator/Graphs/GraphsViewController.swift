@@ -13,8 +13,10 @@ class GraphsViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var graphScrollView: UIScrollView!
     @IBOutlet weak var graphScrollContentView: UIView!
-    @IBOutlet weak var graphSelector: UISegmentedControl!
+    @IBOutlet weak var graphScrollContentWidth: NSLayoutConstraint!
     
+    @IBOutlet weak var graphSelector: UISegmentedControl!
+
     
     //MARK: - IBActions
     @IBAction func selectedGraph(_ sender: UISegmentedControl) {
@@ -44,7 +46,8 @@ class GraphsViewController: UIViewController {
     private var yearlyBarGraph = BarGraphContainerView()
     
     private func scrollTo(_ index: Int) {
-//        graphCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+        let xOffset = CGFloat(index) * graphScrollView.frame.width
+        graphScrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
     }
     
     private func updateTotalsGraph() {
@@ -114,16 +117,25 @@ class GraphsViewController: UIViewController {
         
         timelineVC.delegate = self
         
+        graphScrollContentWidth.constant = graphScrollView.frame.width * 3
+        graphScrollContentView.addSubview(totalsBarGraph)
         graphScrollContentView.addSubview(yearlyBarGraph)
-        yearlyBarGraph.fillSuperview()
+        
         
         updateViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         yearlyBarGraph.viewModel.shouldAnimate = false
         updateViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        totalsBarGraph.frame = CGRect(origin: graphScrollContentView.bounds.origin, size: graphScrollView.frame.size)
+        yearlyBarGraph.frame = CGRect(origin: CGPoint(x: totalsBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
     }
 }
 
