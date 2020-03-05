@@ -68,6 +68,9 @@ struct BarGraphView: View {
     }
 }
 
+
+//MARK: - Section
+
 struct BarGraphSection: View {
     
     @Binding var title: String

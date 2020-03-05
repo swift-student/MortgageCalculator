@@ -52,30 +52,38 @@ class GraphsViewController: UIViewController {
     }
     
     private func updateYearlyGraph() {
-        guard let loanASchedule = loanASchedule else { return }
-        let loanAData = loanASchedule[min(yearIndex, loanASchedule.count - 1)]
-        var loanBData: AmortizationData?
-        if let loanBSchedule = loanBSchedule {
+        var loanAData = AmortizationData.empty
+        var loanBData = AmortizationData.empty
+        
+        if let loanASchedule = loanASchedule,
+            yearIndex < loanASchedule.count {
+            loanAData = loanASchedule[yearIndex]
+        }
+      
+        
+        if let loanBSchedule = loanBSchedule,
+        yearIndex < loanBSchedule.count {
             loanBData = loanBSchedule[min(yearIndex, loanBSchedule.count - 1)]
         }
         
-        var maxValue = loanAData.interest + loanAData.principle
-        if let loanBData = loanBData {
-            maxValue = max(maxValue, loanBData.interest + loanBData.principle)
-        }
+        
         
         let vm = yearlyBarGraph.viewModel
         
-        vm.maxValue = maxValue
+        
+        vm.maxValue = loanController.loans
+            .map{ Calculator.monthlyPayment(forLoan: $0 ) * 12 }
+            .reduce( 0.01 , { max($0, $1) })
+        
         vm.numSections = 2
         
         vm.sectionOneTitle = "Interest"
         vm.sectionOneFirstValue = loanAData.interest
-        vm.sectionOneSecondValue = loanBData?.interest
+        vm.sectionOneSecondValue = loanBData.interest
         
         vm.sectionTwoTitle = "Principle"
         vm.sectionTwoFirstValue = loanAData.principle
-        vm.sectionTwoSecondValue = loanBData?.principle
+        vm.sectionTwoSecondValue = loanBData.principle
     }
     
     func updateViews() {
