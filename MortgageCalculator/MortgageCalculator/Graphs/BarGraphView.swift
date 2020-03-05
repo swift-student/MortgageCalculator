@@ -20,20 +20,26 @@ struct BarGraphView: View {
                     title: $viewModel.sectionOneTitle,
                     firstValue: $viewModel.sectionOneFirstValue,
                     secondValue: $viewModel.sectionOneSecondValue ,
-                    maxValue: $viewModel.maxValue)
+                    maxValue: $viewModel.maxValue,
+                    shouldAnimate: $viewModel.shouldAnimate)
+                    .padding(.horizontal, 20)
                 if viewModel.numSections > 1 {
                     BarGraphSection(
                         title: $viewModel.sectionTwoTitle,
                         firstValue: $viewModel.sectionTwoFirstValue,
                         secondValue: $viewModel.sectionTwoSecondValue,
-                        maxValue: $viewModel.maxValue)
+                        maxValue: $viewModel.maxValue,
+                        shouldAnimate: $viewModel.shouldAnimate)
+                        .padding(.horizontal, 20)
                 }
                 if viewModel.numSections > 2 {
                     BarGraphSection(
                         title: $viewModel.sectionThreeTitle,
                         firstValue: $viewModel.sectionThreeFirstValue,
                         secondValue: $viewModel.sectionThreeSecondValue,
-                        maxValue: $viewModel.maxValue)
+                        maxValue: $viewModel.maxValue,
+                        shouldAnimate: $viewModel.shouldAnimate)
+                        .padding(.horizontal, 20)
                 }
             }.font(.system(size: 20, weight: .semibold))
             
@@ -69,6 +75,8 @@ struct BarGraphSection: View {
     @Binding var secondValue: Double?
     @Binding var maxValue: Double
     
+    @Binding var shouldAnimate: Bool
+    
     var body: some View {
         VStack {
             // Title
@@ -79,14 +87,17 @@ struct BarGraphSection: View {
             HStack {
                 Rectangle()
                     .scale(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
-                    .animation(.easeInOut)
+                    .animation(shouldAnimate ? .easeInOut : .none)
+                    .frame(maxWidth: 40)
                     .padding(8)
                     .foregroundColor(.firstColor)
+                    
                     
                 if secondValue != nil {
                     Rectangle()
                         .scale(x: 1, y: CGFloat(secondValue! / maxValue), anchor: .bottom)
-                        .animation(.easeInOut)
+                        .animation(shouldAnimate ? .easeInOut : .none)
+                        .frame(maxWidth: 40)
                         .padding(8)
                         .foregroundColor(.secondColor)
                 }

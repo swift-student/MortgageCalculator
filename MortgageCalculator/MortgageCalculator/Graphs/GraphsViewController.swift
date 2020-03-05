@@ -71,11 +71,27 @@ class GraphsViewController: UIViewController {
         
         vm.sectionOneTitle = "Interest"
         vm.sectionOneFirstValue = loanAData.interest
-        vm.sectionOneSecondValue = loanBData?.interest ?? 400
+        vm.sectionOneSecondValue = loanBData?.interest
         
         vm.sectionTwoTitle = "Principle"
         vm.sectionTwoFirstValue = loanAData.principle
         vm.sectionTwoSecondValue = loanBData?.principle
+    }
+    
+    func updateViews() {
+        if let loanA = loanController.loans.first {
+            loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
+        } else {
+            /// We don't have any loans to display
+        }
+        if loanController.loans.count > 1, let loanB = loanController.loans.last {
+            loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
+        } else {
+            loanBSchedule = nil
+        }
+        
+        updateYearlyGraph()
+        updateTotalsGraph()
     }
     
     //MARK: - View Lifecycle
@@ -91,22 +107,14 @@ class GraphsViewController: UIViewController {
         
         graphScrollContentView.addSubview(yearlyBarGraph)
         yearlyBarGraph.fillSuperview()
+        
+        updateViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if let loanA = loanController.loans.first {
-            loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
-        } else {
-            /// We don't have any loans to display
-        }
-        if loanController.loans.count > 1, let loanB = loanController.loans.last {
-            loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
-        }
-        
-        updateYearlyGraph()
-        updateTotalsGraph()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        yearlyBarGraph.viewModel.shouldAnimate = false
+        updateViews()
     }
 }
 
@@ -116,5 +124,6 @@ class GraphsViewController: UIViewController {
 extension GraphsViewController: TimelineDelegate {
     func timelineDidSelectYear(atIndex index: Int) {
         yearIndex = index
+        yearlyBarGraph.viewModel.shouldAnimate = true
     }
 }

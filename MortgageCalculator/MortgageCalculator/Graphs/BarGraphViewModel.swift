@@ -11,6 +11,8 @@ import Foundation
 class BarGraphViewModel: ObservableObject {
     @Published var numSections = 1
     
+    @Published var shouldAnimate = false
+    
     @Published var sectionOneTitle: String = "Interest"
     @Published var sectionOneFirstValue: Double = 300
     @Published var sectionOneSecondValue: Double?
