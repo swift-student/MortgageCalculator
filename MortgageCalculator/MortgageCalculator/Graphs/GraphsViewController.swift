@@ -116,8 +116,8 @@ class GraphsViewController: UIViewController {
         }
         
         timelineVC.delegate = self
+        graphScrollView.delegate = self
         
-        graphScrollContentWidth.constant = graphScrollView.frame.width * 3
         graphScrollContentView.addSubview(totalsBarGraph)
         graphScrollContentView.addSubview(yearlyBarGraph)
         
@@ -134,8 +134,18 @@ class GraphsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        graphScrollContentWidth.constant = graphScrollView.frame.width * 3
         totalsBarGraph.frame = CGRect(origin: graphScrollContentView.bounds.origin, size: graphScrollView.frame.size)
         yearlyBarGraph.frame = CGRect(origin: CGPoint(x: totalsBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
+    }
+}
+
+//MARK: - Scroll View Delegate
+
+extension GraphsViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        graphSelector.selectedSegmentIndex = Int(targetContentOffset.pointee.x / graphScrollView.frame.width)
     }
 }
 
