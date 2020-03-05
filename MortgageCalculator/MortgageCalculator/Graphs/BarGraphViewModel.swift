@@ -9,19 +9,21 @@
 import Foundation
 
 class BarGraphViewModel: ObservableObject {
+    @Published var numSections = 1
     
-    struct Section {
-        var title: String
-        var firstValue: Double
-        var secondValue: Double?
-        var maxValue: Double
-    }
+    @Published var sectionOneTitle: String = "Interest"
+    @Published var sectionOneFirstValue: Double = 300
+    @Published var sectionOneSecondValue: Double?
     
-    @Published var sections = [
-        Section(title: "Interest", firstValue: 300, secondValue: 350, maxValue: 1000),
-        Section(title: "Principle", firstValue: 500, secondValue: 600, maxValue: 1000),
-        Section(title: "Total", firstValue: 800, secondValue: 920, maxValue: 1000)
-    ]
+    @Published var sectionTwoTitle: String = "Principle"
+    @Published var sectionTwoFirstValue: Double = 300
+    @Published var sectionTwoSecondValue: Double?
+    
+    @Published var sectionThreeTitle: String = "Total"
+    @Published var sectionThreeFirstValue: Double = 300
+    @Published var sectionThreeSecondValue: Double?
+    
+    @Published var maxValue: Double = 1000
     
     @Published var firstKeyName = "Loan A"
     @Published var secondKeyName = "Loan B"

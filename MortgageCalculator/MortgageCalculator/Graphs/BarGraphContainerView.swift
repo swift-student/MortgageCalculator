@@ -9,15 +9,21 @@
 import UIKit
 import SwiftUI
 
-class BarGraphCollectionViewCell: UICollectionViewCell {
-    var viewModel = BarGraphViewModel()
-    lazy var barGraphView = BarGraphView(viewModel: viewModel)
+class BarGraphContainerView: UIView {
+    
+    let viewModel = BarGraphViewModel()
+    
+    private lazy var barGraphView = BarGraphView(viewModel: viewModel)
+    
+    var hostingController: UIHostingController<BarGraphView>?
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         
         backgroundColor = .clear
-        let hostingController = UIHostingController(rootView: barGraphView)
+        hostingController = UIHostingController(rootView: barGraphView)
+        
+        guard let hostingController = hostingController else { return }
         addSubview(hostingController.view)
         hostingController.view.backgroundColor = .clear
         hostingController.view.fillSuperview()

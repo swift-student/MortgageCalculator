@@ -17,23 +17,23 @@ struct BarGraphView: View {
             // Sections
             HStack {
                 BarGraphSection(
-                    title: viewModel.sections[0].title,
-                    firstValue: viewModel.sections[0].firstValue,
-                    secondValue: viewModel.sections[0].secondValue,
-                    maxValue: viewModel.sections[0].maxValue)
-                if viewModel.sections.count > 1 {
+                    title: $viewModel.sectionOneTitle,
+                    firstValue: $viewModel.sectionOneFirstValue,
+                    secondValue: $viewModel.sectionOneSecondValue ,
+                    maxValue: $viewModel.maxValue)
+                if viewModel.numSections > 1 {
                     BarGraphSection(
-                        title: viewModel.sections[1].title,
-                        firstValue: viewModel.sections[1].firstValue,
-                        secondValue: viewModel.sections[1].secondValue,
-                        maxValue: viewModel.sections[0].maxValue)
+                        title: $viewModel.sectionTwoTitle,
+                        firstValue: $viewModel.sectionTwoFirstValue,
+                        secondValue: $viewModel.sectionTwoSecondValue,
+                        maxValue: $viewModel.maxValue)
                 }
-                if viewModel.sections.count > 2 {
+                if viewModel.numSections > 2 {
                     BarGraphSection(
-                        title: viewModel.sections[2].title,
-                        firstValue: viewModel.sections[2].firstValue,
-                        secondValue: viewModel.sections[2].secondValue,
-                        maxValue: viewModel.sections[0].maxValue)
+                        title: $viewModel.sectionThreeTitle,
+                        firstValue: $viewModel.sectionThreeFirstValue,
+                        secondValue: $viewModel.sectionThreeSecondValue,
+                        maxValue: $viewModel.maxValue)
                 }
             }.font(.system(size: 20, weight: .semibold))
             
@@ -64,28 +64,31 @@ struct BarGraphView: View {
 
 struct BarGraphSection: View {
     
-    @State var title: String
-    @State var firstValue: Double
-    @State var secondValue: Double?
-    @State var maxValue: Double
+    @Binding var title: String
+    @Binding var firstValue: Double
+    @Binding var secondValue: Double?
+    @Binding var maxValue: Double
     
     var body: some View {
         VStack {
             // Title
             Text(title)
-            .font(.system(size: 24, weight: .bold))
+                .font(.system(size: 24, weight: .bold))
             
             // Bars
             HStack {
                 Rectangle()
                     .scale(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
+                    .animation(.easeInOut)
                     .padding(8)
                     .foregroundColor(.firstColor)
+                    
                 if secondValue != nil {
                     Rectangle()
-                    .scale(x: 1, y: CGFloat(secondValue! / maxValue), anchor: .bottom)
-                    .padding(8)
-                    .foregroundColor(.secondColor)
+                        .scale(x: 1, y: CGFloat(secondValue! / maxValue), anchor: .bottom)
+                        .animation(.easeInOut)
+                        .padding(8)
+                        .foregroundColor(.secondColor)
                 }
                 
             }.padding(.horizontal, 8)
@@ -96,8 +99,8 @@ struct BarGraphSection: View {
                 .foregroundColor(.firstColor)
             if secondValue != nil {
                 Text(secondValue!.currencyString ?? "")
-                .fixedSize()
-                .foregroundColor(.secondColor).padding(.top, 4)
+                    .fixedSize()
+                    .foregroundColor(.secondColor).padding(.top, 4)
             }
         }
     }

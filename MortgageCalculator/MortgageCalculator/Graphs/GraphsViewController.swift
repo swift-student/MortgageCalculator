@@ -11,7 +11,8 @@ import UIKit
 class GraphsViewController: UIViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var graphCollectionView: UICollectionView!
+    @IBOutlet weak var graphScrollView: UIScrollView!
+    @IBOutlet weak var graphScrollContentView: UIView!
     @IBOutlet weak var graphSelector: UISegmentedControl!
     
     
@@ -21,10 +22,60 @@ class GraphsViewController: UIViewController {
     }
     
     
-    //MARK: Private
+    //MARK: - Properties
+    
+    var loanController: LoanController!
+    
+    
+    //MARK: - Private
+    
+    private var loanASchedule: AmortizationSchedule?
+    private var loanBSchedule: AmortizationSchedule?
+    
+    private var yearIndex = 0 {
+        didSet {
+            updateTotalsGraph()
+            updateYearlyGraph()
+        }
+    }
+    
+    private var totalsBarGraph = BarGraphContainerView()
+    
+    private var yearlyBarGraph = BarGraphContainerView()
     
     private func scrollTo(_ index: Int) {
-        graphCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+//        graphCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    private func updateTotalsGraph() {
+        
+    }
+    
+    private func updateYearlyGraph() {
+        guard let loanASchedule = loanASchedule else { return }
+        let loanAData = loanASchedule[min(yearIndex, loanASchedule.count - 1)]
+        var loanBData: AmortizationData?
+        if let loanBSchedule = loanBSchedule {
+            loanBData = loanBSchedule[min(yearIndex, loanBSchedule.count - 1)]
+        }
+        
+        var maxValue = loanAData.interest + loanAData.principle
+        if let loanBData = loanBData {
+            maxValue = max(maxValue, loanBData.interest + loanBData.principle)
+        }
+        
+        let vm = yearlyBarGraph.viewModel
+        
+        vm.maxValue = maxValue
+        vm.numSections = 2
+        
+        vm.sectionOneTitle = "Interest"
+        vm.sectionOneFirstValue = loanAData.interest
+        vm.sectionOneSecondValue = loanBData?.interest ?? 400
+        
+        vm.sectionTwoTitle = "Principle"
+        vm.sectionTwoFirstValue = loanAData.principle
+        vm.sectionTwoSecondValue = loanBData?.principle
     }
     
     //MARK: - View Lifecycle
@@ -32,40 +83,30 @@ class GraphsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        graphCollectionView.dataSource = self
-        graphCollectionView.delegate = self
-        graphCollectionView.register(BarGraphCollectionViewCell.self, forCellWithReuseIdentifier: "BarGraphCell")
-        
-        guard let timelineController = children.first as? TimelineViewController else  {
+        guard let timelineVC = children.first as? TimelineViewController else  {
           fatalError("Check storyboard for missing TimelineViewController")
         }
         
-        timelineController.delegate = self
-    }
-}
-
-
-//MARK: - Collection View Data Source
-
-extension GraphsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        timelineVC.delegate = self
+        
+        graphScrollContentView.addSubview(yearlyBarGraph)
+        yearlyBarGraph.fillSuperview()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(collectionView.frame.size)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BarGraphCell", for: indexPath)
-        return cell
-    }
-    
-    
-}
-
-//MARK: - Flow Layout Delegate
-
-extension GraphsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return graphCollectionView.frame.size
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let loanA = loanController.loans.first {
+            loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
+        } else {
+            /// We don't have any loans to display
+        }
+        if loanController.loans.count > 1, let loanB = loanController.loans.last {
+            loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
+        }
+        
+        updateYearlyGraph()
+        updateTotalsGraph()
     }
 }
 
@@ -74,7 +115,6 @@ extension GraphsViewController: UICollectionViewDelegateFlowLayout {
 
 extension GraphsViewController: TimelineDelegate {
     func timelineDidSelectYear(atIndex index: Int) {
-        // Update each graph with data for selected year
-        print("Timeline selected year at index: \(index)")
+        yearIndex = index
     }
 }

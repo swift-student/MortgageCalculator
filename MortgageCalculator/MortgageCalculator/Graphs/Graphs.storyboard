@@ -32,17 +32,6 @@
                                     <action selector="selectedGraph:" destination="O85-OP-m8H" eventType="valueChanged" id="bRn-HZ-eas"/>
                                 </connections>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-98-89E">
-                                <rect key="frame" x="0.0" y="64" width="414" height="513"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CDF-4c-kLH">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkt-gJ-2WG">
                                 <rect key="frame" x="0.0" y="697" width="414" height="56"/>
                                 <constraints>
@@ -52,25 +41,45 @@
                                     <segue destination="isu-E5-Vdj" kind="embed" id="2aI-QS-9Me"/>
                                 </connections>
                             </containerView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVO-wP-uat">
+                                <rect key="frame" x="0.0" y="64" width="414" height="513"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufG-0b-FEQ" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="trailing" secondItem="8jR-Bz-mxv" secondAttribute="trailing" id="9ld-ML-O2R"/>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="leading" secondItem="8jR-Bz-mxv" secondAttribute="leading" id="Azr-k6-e3s"/>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="height" secondItem="RXg-7q-Afq" secondAttribute="height" id="RnP-yy-6OF"/>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="top" secondItem="8jR-Bz-mxv" secondAttribute="top" id="SkS-pD-8Mz"/>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="bottom" secondItem="8jR-Bz-mxv" secondAttribute="bottom" id="oWb-O6-WBh"/>
+                                    <constraint firstItem="ufG-0b-FEQ" firstAttribute="width" secondItem="RXg-7q-Afq" secondAttribute="width" id="vL6-XF-lZR"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="8jR-Bz-mxv"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="RXg-7q-Afq"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rug-vH-0yX" firstAttribute="top" secondItem="g6v-98-89E" secondAttribute="bottom" constant="40" id="4wD-ZF-b93"/>
                             <constraint firstItem="gkt-gJ-2WG" firstAttribute="top" secondItem="rug-vH-0yX" secondAttribute="bottom" constant="40" id="AwB-XC-He5"/>
+                            <constraint firstItem="dVO-wP-uat" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="CD7-uA-3F4"/>
                             <constraint firstItem="rug-vH-0yX" firstAttribute="centerX" secondItem="w6S-I3-UFO" secondAttribute="centerX" id="D2B-RY-cag"/>
-                            <constraint firstItem="g6v-98-89E" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="MBr-YL-deI"/>
-                            <constraint firstItem="g6v-98-89E" firstAttribute="top" secondItem="nOM-l4-tBA" secondAttribute="top" constant="20" id="OVl-rq-3yY"/>
                             <constraint firstItem="gkt-gJ-2WG" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="Uzj-XU-7Tg"/>
+                            <constraint firstItem="dVO-wP-uat" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="ab1-lN-OpY"/>
+                            <constraint firstItem="rug-vH-0yX" firstAttribute="top" secondItem="dVO-wP-uat" secondAttribute="bottom" constant="40" id="glL-Kg-unQ"/>
+                            <constraint firstItem="dVO-wP-uat" firstAttribute="top" secondItem="nOM-l4-tBA" secondAttribute="top" constant="20" id="oda-IG-dqQ"/>
                             <constraint firstItem="gkt-gJ-2WG" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="r2V-8K-czs"/>
                             <constraint firstItem="nOM-l4-tBA" firstAttribute="bottom" secondItem="gkt-gJ-2WG" secondAttribute="bottom" constant="60" id="rj2-PZ-U3y"/>
-                            <constraint firstItem="g6v-98-89E" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="sI4-XA-1W8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nOM-l4-tBA"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graphs" image="chart.bar.fill" catalog="system" id="mly-se-o5q"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="graphCollectionView" destination="g6v-98-89E" id="6AR-Tv-pCC"/>
+                        <outlet property="graphScrollContentView" destination="ufG-0b-FEQ" id="iqe-DM-TAx"/>
+                        <outlet property="graphScrollView" destination="dVO-wP-uat" id="KYW-gg-7zA"/>
                         <outlet property="graphSelector" destination="rug-vH-0yX" id="HII-Us-Y0h"/>
                     </connections>
                 </viewController>
@@ -207,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6f-3f-mll" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="207"/>
+            <point key="canvasLocation" x="400" y="711"/>
         </scene>
     </scenes>
     <resources>

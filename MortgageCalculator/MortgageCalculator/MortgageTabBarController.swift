@@ -13,19 +13,16 @@ class MortgageTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard let summaryVC = children[0] as? SummaryViewController else  {
+            fatalError("Check storyboard for missing SummaryViewController")
+        }
+        guard let graphsVC = children[1] as? GraphsViewController else  {
+            fatalError("Check storyboard for missing GraphsViewController")
+        }
+        
+        summaryVC.loanController = loanController
+        graphsVC.loanController = loanController
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
