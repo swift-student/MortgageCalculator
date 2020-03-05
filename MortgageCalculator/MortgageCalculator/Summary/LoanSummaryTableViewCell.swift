@@ -47,6 +47,7 @@ class LoanSummaryTableViewCell: UITableViewCell {
         let amountFinanced = purchasePrice - loan.downPayment
         let totalInterest = Calculator.totalInterest(forLoan: loan)
         
+        loanNameLabel.text = loan.name
         purchasePriceLabel.text = purchasePrice.currencyString
         amountFinancedLabel.text = amountFinanced.currencyString
         monthlyPaymentLabel.text = monthlyPayment.currencyString

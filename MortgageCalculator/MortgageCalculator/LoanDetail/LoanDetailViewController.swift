@@ -14,6 +14,8 @@ protocol LoanDetailDelegate {
 class LoanDetailViewController: UIViewController {
     
     //MARK: - IBOutlets
+    
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceOrPaymentSelector: UISegmentedControl!
     @IBOutlet weak var priceOrPaymentTextField: UITextField!
     @IBOutlet weak var priceOrPaymentLabel: UILabel!
@@ -46,6 +48,9 @@ class LoanDetailViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    //MARK: - Properties
+    
+    var defaultLoanName: String?
     var loan: Loan?
     var loanController: LoanController?
     var delegate: LoanDetailDelegate?
@@ -56,7 +61,13 @@ class LoanDetailViewController: UIViewController {
     private var shouldSave = true
     
     private func updateViews() {
+        if let defaultLoanName = defaultLoanName {
+            titleTextField.text = defaultLoanName
+        }
+        
         guard let loan = loan else { return }
+        
+        titleTextField.text = loan.name
         
         if let purchasePrice = loan.purchasePrice {
             priceOrPaymentTextField.text = String(purchasePrice)
@@ -83,6 +94,8 @@ class LoanDetailViewController: UIViewController {
     }
     
     private func save() {
+        guard let loanName = titleTextField.text else { return }
+        
         guard let priceOrPaymentText = priceOrPaymentTextField.text,
               let downPaymentText = downPaymentTextField.text,
               let interestRateText = interestRateTextField.text else { return }
@@ -113,6 +126,7 @@ class LoanDetailViewController: UIViewController {
         }
         
         if var loan = loan {
+            loan.name = loanName
             loan.purchasePrice = purchasePrice
             loan.monthlyPayment = monthlyPayment
             loan.downPayment = downPayment
@@ -120,7 +134,7 @@ class LoanDetailViewController: UIViewController {
             loan.term = term
             loanController?.update(loan: loan)
         } else {
-            let newLoan = Loan(purchasePrice: purchasePrice, monthlyPayment: monthlyPayment, downPayment: downPayment, interestRate: interestRate, term: term)
+            let newLoan = Loan(name: loanName, purchasePrice: purchasePrice, monthlyPayment: monthlyPayment, downPayment: downPayment, interestRate: interestRate, term: term)
             loanController?.add(loan: newLoan)
         }
         
