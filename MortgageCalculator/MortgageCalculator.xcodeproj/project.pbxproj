@@ -22,9 +22,12 @@
 		04392C75240DB13A00695665 /* Amortization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C74240DB13A00695665 /* Amortization.swift */; };
 		04392C77240DB1B600695665 /* Graphs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04392C76240DB1B600695665 /* Graphs.storyboard */; };
 		04392C7E240DCAAA00695665 /* LoanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C7D240DCAA900695665 /* LoanController.swift */; };
+		048C7288240FEA050061266A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C7287240FEA050061266A /* TimelineViewController.swift */; };
+		048C728B241041420061266A /* BarGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C728A241041420061266A /* BarGraphViewModel.swift */; };
+		04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E69AD0240FE86C00D28434 /* UIView+Layout.swift */; };
 		04F67D94240F0A720095D256 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D93240F0A720095D256 /* GradientView.swift */; };
-		04F67D97240F21BD0095D256 /* BarGraphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */; };
-		04F67D98240F21BD0095D256 /* BarGraphCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F67D96240F21BD0095D256 /* BarGraphCollectionViewCell.xib */; };
+		04F67D97240F21BD0095D256 /* BarGraphContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D95240F21BD0095D256 /* BarGraphContainerView.swift */; };
+		04F67D9D240FCF5E0095D256 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D9C240FCF5E0095D256 /* BarGraphView.swift */; };
 		04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7250D240EF42800A47A62 /* GraphsViewController.swift */; };
 		04F72510240EF8F800A47A62 /* YearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7250F240EF8F800A47A62 /* YearCell.swift */; };
 /* End PBXBuildFile section */
@@ -47,9 +50,12 @@
 		04392C74240DB13A00695665 /* Amortization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amortization.swift; sourceTree = "<group>"; };
 		04392C76240DB1B600695665 /* Graphs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphs.storyboard; sourceTree = "<group>"; };
 		04392C7D240DCAA900695665 /* LoanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanController.swift; sourceTree = "<group>"; };
+		048C7287240FEA050061266A /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = MortgageCalculator/Graphs/TimelineViewController.swift; sourceTree = SOURCE_ROOT; };
+		048C728A241041420061266A /* BarGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphViewModel.swift; sourceTree = "<group>"; };
+		04E69AD0240FE86C00D28434 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		04F67D93240F0A720095D256 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = MortgageCalculator/Graphs/Timeline/GradientView.swift; sourceTree = SOURCE_ROOT; };
-		04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarGraphCollectionViewCell.swift; path = MortgageCalculator/Graphs/BarGraphCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		04F67D96240F21BD0095D256 /* BarGraphCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BarGraphCollectionViewCell.xib; path = MortgageCalculator/Graphs/BarGraphCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		04F67D95240F21BD0095D256 /* BarGraphContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarGraphContainerView.swift; path = MortgageCalculator/Graphs/BarGraphContainerView.swift; sourceTree = SOURCE_ROOT; };
+		04F67D9C240FCF5E0095D256 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		04F7250D240EF42800A47A62 /* GraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		04F7250F240EF8F800A47A62 /* YearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YearCell.swift; path = MortgageCalculator/Graphs/Timeline/YearCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -69,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				04392C53240D97CA00695665 /* MortgageCalculator */,
-				040FD6BD240ED0780018AA42 /* CurrencyExtensions.swift */,
 				04392C52240D97CA00695665 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,12 +90,13 @@
 		04392C53240D97CA00695665 /* MortgageCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				04E69AD3240FE88C00D28434 /* Extensions */,
 				040FD6BB240EC6500018AA42 /* MortgageTabBarController.swift */,
 				04F67D99240F21E50095D256 /* Graphs */,
+				04392C5A240D97CA00695665 /* Main.storyboard */,
 				04392C70240DA07800695665 /* Summary */,
 				04F67D9B240F22F70095D256 /* LoanDetail */,
 				04392C72240DA09800695665 /* Resources */,
-				04392C71240DA08700695665 /* Storyboards */,
 				04392C73240DA10D00695665 /* Model */,
 			);
 			path = MortgageCalculator;
@@ -99,24 +105,16 @@
 		04392C70240DA07800695665 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				04392C5A240D97CA00695665 /* Main.storyboard */,
 				04392C6E240DA06500695665 /* SummaryViewController.swift */,
 				040FD6B9240EBED70018AA42 /* LoanSummaryTableViewCell.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
 		};
-		04392C71240DA08700695665 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				04392C5F240D97CC00695665 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		04392C72240DA09800695665 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04392C5F240D97CC00695665 /* LaunchScreen.storyboard */,
 				04392C54240D97CA00695665 /* AppDelegate.swift */,
 				04392C56240D97CA00695665 /* SceneDelegate.swift */,
 				04392C5D240D97CC00695665 /* Assets.xcassets */,
@@ -136,13 +134,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		04E69AD3240FE88C00D28434 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04E69AD0240FE86C00D28434 /* UIView+Layout.swift */,
+				040FD6BD240ED0780018AA42 /* CurrencyExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		04F67D99240F21E50095D256 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
 				04392C76240DB1B600695665 /* Graphs.storyboard */,
-				04F67D96240F21BD0095D256 /* BarGraphCollectionViewCell.xib */,
 				04F7250D240EF42800A47A62 /* GraphsViewController.swift */,
-				04F67D95240F21BD0095D256 /* BarGraphCollectionViewCell.swift */,
+				04F67D95240F21BD0095D256 /* BarGraphContainerView.swift */,
+				04F67D9C240FCF5E0095D256 /* BarGraphView.swift */,
+				048C728A241041420061266A /* BarGraphViewModel.swift */,
 				04F67D9A240F224D0095D256 /* Timeline */,
 			);
 			path = Graphs;
@@ -151,6 +159,7 @@
 		04F67D9A240F224D0095D256 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				048C7287240FEA050061266A /* TimelineViewController.swift */,
 				04F67D93240F0A720095D256 /* GradientView.swift */,
 				04F7250F240EF8F800A47A62 /* YearCell.swift */,
 			);
@@ -175,6 +184,7 @@
 				04392C4D240D97CA00695665 /* Sources */,
 				04392C4E240D97CA00695665 /* Frameworks */,
 				04392C4F240D97CA00695665 /* Resources */,
+				048C72892410180A0061266A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -227,11 +237,30 @@
 				04392C77240DB1B600695665 /* Graphs.storyboard in Resources */,
 				04392C5E240D97CC00695665 /* Assets.xcassets in Resources */,
 				04392C5C240D97CA00695665 /* Main.storyboard in Resources */,
-				04F67D98240F21BD0095D256 /* BarGraphCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		048C72892410180A0061266A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04392C4D240D97CA00695665 /* Sources */ = {
@@ -240,11 +269,14 @@
 			files = (
 				040FD6BA240EBED70018AA42 /* LoanSummaryTableViewCell.swift in Sources */,
 				04392C6B240D988A00695665 /* Loan.swift in Sources */,
-				04F67D97240F21BD0095D256 /* BarGraphCollectionViewCell.swift in Sources */,
+				04F67D97240F21BD0095D256 /* BarGraphContainerView.swift in Sources */,
 				04F67D94240F0A720095D256 /* GradientView.swift in Sources */,
 				04F72510240EF8F800A47A62 /* YearCell.swift in Sources */,
+				048C7288240FEA050061266A /* TimelineViewController.swift in Sources */,
+				04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */,
 				040FD6BE240ED0780018AA42 /* CurrencyExtensions.swift in Sources */,
 				04392C69240D986E00695665 /* Calculator.swift in Sources */,
+				048C728B241041420061266A /* BarGraphViewModel.swift in Sources */,
 				04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */,
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,
@@ -253,6 +285,7 @@
 				04392C75240DB13A00695665 /* Amortization.swift in Sources */,
 				04392C6F240DA06500695665 /* SummaryViewController.swift in Sources */,
 				04392C7E240DCAAA00695665 /* LoanController.swift in Sources */,
+				04F67D9D240FCF5E0095D256 /* BarGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

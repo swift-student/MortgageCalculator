@@ -10,12 +10,21 @@ import UIKit
 
 class SummaryViewController: UIViewController {
     
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noLoansLabel: UILabel!
     @IBOutlet weak var addLoanButton: UIButton!
     @IBOutlet weak var addLoanLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
-    let loanController = LoanController()
+    
+    
+    //MARK: - Properties
+    
+    var loanController: LoanController!
+    
+    
+    //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
