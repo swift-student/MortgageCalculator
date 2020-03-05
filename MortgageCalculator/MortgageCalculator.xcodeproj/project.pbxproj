@@ -10,6 +10,8 @@
 		040FD6BA240EBED70018AA42 /* LoanSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FD6B9240EBED70018AA42 /* LoanSummaryTableViewCell.swift */; };
 		040FD6BC240EC6500018AA42 /* MortgageTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FD6BB240EC6500018AA42 /* MortgageTabBarController.swift */; };
 		040FD6BE240ED0780018AA42 /* CurrencyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FD6BD240ED0780018AA42 /* CurrencyExtensions.swift */; };
+		0435F0AB241181E200B285BB /* RingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435F0AA241181E200B285BB /* RingGraphView.swift */; };
+		0435F0AF24119D3000B285BB /* RingGraphContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435F0AE24119D3000B285BB /* RingGraphContainerView.swift */; };
 		04392C55240D97CA00695665 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C54240D97CA00695665 /* AppDelegate.swift */; };
 		04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04392C56240D97CA00695665 /* SceneDelegate.swift */; };
 		04392C5C240D97CA00695665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04392C5A240D97CA00695665 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		040FD6B9240EBED70018AA42 /* LoanSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoanSummaryTableViewCell.swift; path = MortgageCalculator/Summary/LoanSummaryTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		040FD6BB240EC6500018AA42 /* MortgageTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageTabBarController.swift; sourceTree = "<group>"; };
 		040FD6BD240ED0780018AA42 /* CurrencyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExtensions.swift; sourceTree = "<group>"; };
+		0435F0AA241181E200B285BB /* RingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingGraphView.swift; sourceTree = "<group>"; };
+		0435F0AE24119D3000B285BB /* RingGraphContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingGraphContainerView.swift; sourceTree = "<group>"; };
 		04392C51240D97CA00695665 /* MortgageCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MortgageCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04392C54240D97CA00695665 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04392C56240D97CA00695665 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0435F0A92411807300B285BB /* RingGraph */ = {
+			isa = PBXGroup;
+			children = (
+				0435F0AE24119D3000B285BB /* RingGraphContainerView.swift */,
+				0435F0AA241181E200B285BB /* RingGraphView.swift */,
+			);
+			path = RingGraph;
+			sourceTree = "<group>";
+		};
 		04392C48240D97CA00695665 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 				04392C76240DB1B600695665 /* Graphs.storyboard */,
 				04F7250D240EF42800A47A62 /* GraphsViewController.swift */,
 				048C728C24114D490061266A /* BarGraph */,
+				0435F0A92411807300B285BB /* RingGraph */,
 				04F67D9A240F224D0095D256 /* Timeline */,
 			);
 			path = Graphs;
@@ -281,11 +295,13 @@
 				04F67D94240F0A720095D256 /* GradientView.swift in Sources */,
 				04F72510240EF8F800A47A62 /* YearCell.swift in Sources */,
 				048C7288240FEA050061266A /* TimelineViewController.swift in Sources */,
+				0435F0AF24119D3000B285BB /* RingGraphContainerView.swift in Sources */,
 				04E69AD1240FE86C00D28434 /* UIView+Layout.swift in Sources */,
 				040FD6BE240ED0780018AA42 /* CurrencyExtensions.swift in Sources */,
 				04392C69240D986E00695665 /* Calculator.swift in Sources */,
 				048C728B241041420061266A /* BarGraphViewModel.swift in Sources */,
 				04F7250E240EF42800A47A62 /* GraphsViewController.swift in Sources */,
+				0435F0AB241181E200B285BB /* RingGraphView.swift in Sources */,
 				04392C55240D97CA00695665 /* AppDelegate.swift in Sources */,
 				04392C57240D97CA00695665 /* SceneDelegate.swift in Sources */,
 				040FD6BC240EC6500018AA42 /* MortgageTabBarController.swift in Sources */,

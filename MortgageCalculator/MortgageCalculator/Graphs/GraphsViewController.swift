@@ -37,8 +37,8 @@ class GraphsViewController: UIViewController {
     private var yearIndex = 0
     
     private var totalsBarGraph = BarGraphContainerView()
-    
     private var yearlyBarGraph = BarGraphContainerView()
+    private var progressRingGraph = RingGraphContainerView()
     
     private func scrollTo(_ index: Int) {
         let xOffset = CGFloat(index) * graphScrollView.frame.width
@@ -183,7 +183,9 @@ class GraphsViewController: UIViewController {
         
         graphScrollContentView.addSubview(totalsBarGraph)
         graphScrollContentView.addSubview(yearlyBarGraph)
-        
+        graphScrollContentView.addSubview(progressRingGraph)
+        graphSelector.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+        graphSelector.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         
 //        updateSchedules()
     }
@@ -207,6 +209,7 @@ class GraphsViewController: UIViewController {
         graphScrollContentWidth.constant = graphScrollView.frame.width * 3
         totalsBarGraph.frame = CGRect(origin: graphScrollContentView.bounds.origin, size: graphScrollView.frame.size)
         yearlyBarGraph.frame = CGRect(origin: CGPoint(x: totalsBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
+        progressRingGraph.frame = CGRect(origin: CGPoint(x: yearlyBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
     }
 }
 
