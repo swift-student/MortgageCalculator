@@ -60,8 +60,9 @@ struct BarGraphView: View {
                 Spacer()
                 
                 if viewModel.firstKeyName != "" {
-                    Circle()
+                    Rectangle()
                         .frame(width: 20, height: 20, alignment: .leading)
+                        .cornerRadius(4.0)
                         .foregroundColor(.firstColor)
                     Text(viewModel.firstKeyName)
                         .font(.system(size: 20, weight: .semibold))
@@ -72,8 +73,9 @@ struct BarGraphView: View {
                 if viewModel.secondKeyName != "" {
                     Spacer()
                     
-                    Circle()
+                    Rectangle()
                         .frame(width: 20, height: 20, alignment: .leading)
+                        .cornerRadius(4.0)
                         .foregroundColor(.secondColor)
                     Text(viewModel.secondKeyName)
                         .font(.system(size: 20, weight: .semibold))
@@ -111,7 +113,9 @@ struct BarGraphSection: View {
             // Bars
             HStack {
                 Rectangle()
-                    .scale(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
+                    .cornerRadius(4.0)
+                    .scaleEffect(x: 1, y: CGFloat(firstValue / maxValue), anchor: .bottom)
+                    .cornerRadius(4.0)
                     .animation(shouldAnimate ? .easeInOut : .none)
                     .frame(maxWidth: 40)
                     .padding(8)
@@ -120,7 +124,9 @@ struct BarGraphSection: View {
                     
                 if numValues > 1 {
                     Rectangle()
-                        .scale(x: 1, y: CGFloat(secondValue / maxValue), anchor: .bottom)
+                        .cornerRadius(4.0)
+                        .scaleEffect(x: 1, y: CGFloat(secondValue / maxValue), anchor: .bottom)
+                        .cornerRadius(4.0)
                         .animation(shouldAnimate ? .easeInOut : .none)
                         .frame(maxWidth: 40)
                         .padding(8)
