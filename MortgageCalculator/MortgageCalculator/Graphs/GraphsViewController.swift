@@ -152,7 +152,7 @@ class GraphsViewController: UIViewController {
         vm.secondKeyName = loanController.loans.element(atIndex: 1)?.name ?? ""
     }
     
-    func updateViews() {
+    func updateSchedules() {
         if let loanA = loanController.loans.first {
             loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
         } else {
@@ -178,20 +178,27 @@ class GraphsViewController: UIViewController {
         }
         
         timelineVC.delegate = self
+        
         graphScrollView.delegate = self
         
         graphScrollContentView.addSubview(totalsBarGraph)
         graphScrollContentView.addSubview(yearlyBarGraph)
         
         
-        updateViews()
+//        updateSchedules()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        guard let timelineVC = children.first as? TimelineViewController else  {
+          fatalError("Check storyboard for missing TimelineViewController")
+        }
+        
+        timelineVC.numYears = loanController.loans.map{ $0.term }.reduce(1, { max($0, $1) })
+        
         yearlyBarGraph.viewModel.shouldAnimate = false
-        updateViews()
+        updateSchedules()
     }
     
     override func viewDidAppear(_ animated: Bool) {

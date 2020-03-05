@@ -55,6 +55,8 @@ class TimelineViewController: UIViewController {
                 years.append(String(startYear + i))
             }
         }
+        
+        timelineView.reloadData()
     }
     
     
