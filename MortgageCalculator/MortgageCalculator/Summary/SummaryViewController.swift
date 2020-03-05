@@ -74,6 +74,8 @@ extension SummaryViewController: UITableViewDataSource {
         }
         
         cell.loan = loanController.loans[indexPath.row]
+        cell.color = indexPath.row == 0 ? .systemPink : .systemBlue
+        
         return cell
     }
     

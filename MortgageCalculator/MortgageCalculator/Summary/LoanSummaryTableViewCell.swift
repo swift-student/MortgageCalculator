@@ -13,6 +13,7 @@ class LoanSummaryTableViewCell: UITableViewCell {
     //MARK: - IBOutlets
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var loanNameLabel: UILabel!
+    
     @IBOutlet weak var purchasePriceLabel: UILabel!
     @IBOutlet weak var amountFinancedLabel: UILabel!
     @IBOutlet weak var monthlyPaymentLabel: UILabel!
@@ -26,14 +27,20 @@ class LoanSummaryTableViewCell: UITableViewCell {
     
     var loan: Loan? {
         didSet {
-            updateViews()
+            updateLabels()
+        }
+    }
+    
+    var color: UIColor? {
+        didSet {
+            updateHeaderColor()
         }
     }
     
     
     //MARK: - Private
     
-    private func updateViews() {
+    private func updateLabels() {
         guard let loan = loan else { return }
         let purchasePrice = loan.purchasePrice ?? Calculator.purchasePrice(forLoan: loan)
         let monthlyPayment = loan.monthlyPayment ?? Calculator.monthlyPayment(forLoan: loan)
@@ -47,6 +54,11 @@ class LoanSummaryTableViewCell: UITableViewCell {
         interestRateLabel.text = "\(loan.interestRate)%"
         totalInterestLabel.text = totalInterest.currencyString
         totalPaymentsLabel.text = (totalInterest + amountFinanced).currencyString
+    }
+    
+    private func updateHeaderColor() {
+        guard let color = color else { return }
+        headerView.backgroundColor = color
     }
 }
 
