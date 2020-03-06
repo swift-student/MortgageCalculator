@@ -23,6 +23,5 @@ class MortgageTabBarController: UITabBarController {
         
         summaryVC.loanController = loanController
         graphsVC.loanController = loanController
-        
     }
 }

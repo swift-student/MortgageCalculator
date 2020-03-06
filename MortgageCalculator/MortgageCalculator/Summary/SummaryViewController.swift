@@ -14,14 +14,32 @@ class SummaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noLoansLabel: UILabel!
-    @IBOutlet weak var addLoanButton: UIButton!
-    @IBOutlet weak var addLoanLabel: UILabel!
+    @IBOutlet weak var copyLoanButtonContainer: UIView!
+    @IBOutlet weak var addLoanButtonContainer: UIView!
     @IBOutlet weak var separatorView: UIView!
+    
+    
+    //MARK: - IBActions
+    
+    @IBAction func copyLoanTapped(_ sender: UIButton) {
+        copyLoan()
+    }
     
     
     //MARK: - Properties
     
     var loanController: LoanController!
+    
+    
+    //MARK: - Private
+    
+    func copyLoan() {
+        guard let loan = loanController.loans.first else { return }
+        let copyName = loan.name != "Loan B" ? "Loan B" : "Loan A"
+        let loanCopy = Loan(name: copyName, purchasePrice: loan.purchasePrice, monthlyPayment: loan.monthlyPayment, downPayment: loan.downPayment, interestRate: loan.interestRate, term: loan.term)
+        loanController.add(loan: loanCopy)
+        tableView.insertRows(at: [IndexPath(row: loanController.loans.count - 1, section: 0)], with: .top)
+    }
     
     
     //MARK: - View Lifecycle
@@ -64,8 +82,8 @@ extension SummaryViewController: UITableViewDataSource {
         let numRows =  loanController.loans.count
         
         noLoansLabel.isHidden = numRows > 0
-        addLoanButton.isHidden = numRows > 1
-        addLoanLabel.isHidden = numRows > 1
+        copyLoanButtonContainer.isHidden = numRows != 1
+        addLoanButtonContainer.isHidden = numRows > 1
         separatorView.isHidden = numRows < 2
         
         return numRows
@@ -101,6 +119,7 @@ extension SummaryViewController: UITableViewDelegate {
         tableView.frame.height / 2
     }
 }
+
 
 //MARK: - Loan Detail Delegate
 

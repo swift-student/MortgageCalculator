@@ -199,54 +199,105 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Loans to Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-7k-VUI">
-                                <rect key="frame" x="87.5" y="413" width="239" height="31.5"/>
+                                <rect key="frame" x="87.5" y="370" width="239" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOd-nX-JMG">
-                                <rect key="frame" x="165" y="593" width="84" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="CYe-mG-P1L"/>
-                                    <constraint firstAttribute="width" constant="84" id="uQE-VF-8er"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" image="plus.rectangle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60" scale="medium" weight="light"/>
-                                </state>
-                                <connections>
-                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoan" id="BHp-Nf-2dT"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A Loan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pye-kR-u9d">
-                                <rect key="frame" x="161.5" y="672.5" width="91" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9rC-SI-HS7">
+                                <rect key="frame" x="147" y="518" width="120" height="250"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gn1-i0-cJx">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-BR-yNg">
+                                                <rect key="frame" x="10" y="8.5" width="100" height="103"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="103" id="BE3-C4-FOt"/>
+                                                    <constraint firstAttribute="width" constant="100" id="jev-H3-xaH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                                <state key="normal" image="rectangle.on.rectangle.angled" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60" scale="medium" weight="light"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="copyLoanTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bip-6c-xrg"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Loan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of2-Tj-wuL">
+                                                <rect key="frame" x="18" y="91" width="84.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="jA1-BR-yNg" firstAttribute="centerX" secondItem="gn1-i0-cJx" secondAttribute="centerX" id="BIR-J8-1JF"/>
+                                            <constraint firstItem="of2-Tj-wuL" firstAttribute="centerX" secondItem="gn1-i0-cJx" secondAttribute="centerX" id="Cdc-Zb-UUO"/>
+                                            <constraint firstAttribute="height" constant="120" id="NRO-ny-nSr"/>
+                                            <constraint firstItem="jA1-BR-yNg" firstAttribute="centerY" secondItem="gn1-i0-cJx" secondAttribute="centerY" id="OMm-rb-C4c"/>
+                                            <constraint firstAttribute="width" constant="120" id="Ruw-Qu-w4y"/>
+                                            <constraint firstItem="of2-Tj-wuL" firstAttribute="bottom" secondItem="jA1-BR-yNg" secondAttribute="bottom" id="WZP-Dg-D0P"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-91-4m2">
+                                        <rect key="frame" x="0.0" y="130" width="120" height="120"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOd-nX-JMG">
+                                                <rect key="frame" x="10" y="14" width="100" height="92"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="92" id="2tl-dO-TKn"/>
+                                                    <constraint firstAttribute="width" constant="100" id="uw3-cE-lCL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                                <state key="normal" image="plus.rectangle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60" scale="medium" weight="light"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="MKF-9v-8P5" kind="presentation" identifier="AddLoan" id="BHp-Nf-2dT"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A Loan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pye-kR-u9d">
+                                                <rect key="frame" x="14.5" y="85.5" width="91" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerY" secondItem="mRd-91-4m2" secondAttribute="centerY" id="1Ty-y7-RO3"/>
+                                            <constraint firstItem="Pye-kR-u9d" firstAttribute="bottom" secondItem="gOd-nX-JMG" secondAttribute="bottom" id="C26-e6-zp6"/>
+                                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerX" secondItem="mRd-91-4m2" secondAttribute="centerX" id="FH6-1t-bgN"/>
+                                            <constraint firstItem="Pye-kR-u9d" firstAttribute="centerX" secondItem="mRd-91-4m2" secondAttribute="centerX" id="Lmu-4A-Xgq"/>
+                                            <constraint firstAttribute="height" constant="120" id="Nu1-NS-1va"/>
+                                            <constraint firstAttribute="width" constant="120" id="eq7-Rq-tnM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5xf-sk-eeo"/>
+                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="5xf-sk-eeo"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7WA-IC-Fls"/>
+                            <constraint firstItem="9rC-SI-HS7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="9zh-ma-A5N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ps6-G5-R1k" secondAttribute="trailing" id="Lsn-eh-XmA"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NXL-Vf-R3q"/>
-                            <constraint firstItem="Pye-kR-u9d" firstAttribute="bottom" secondItem="gOd-nX-JMG" secondAttribute="bottom" id="Rqf-hp-5cP"/>
                             <constraint firstItem="Eum-AR-dNF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XAq-Ff-2eW"/>
-                            <constraint firstItem="Pye-kR-u9d" firstAttribute="centerX" secondItem="gOd-nX-JMG" secondAttribute="centerX" id="Zsl-yz-ls5"/>
+                            <constraint firstItem="9rC-SI-HS7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jX5-mz-fmp"/>
                             <constraint firstItem="Eum-AR-dNF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="k0G-bq-CQu"/>
                             <constraint firstItem="Eum-AR-dNF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rpr-Nl-0rD"/>
                             <constraint firstItem="Jca-7k-VUI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkE-50-N3m"/>
-                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vnD-qC-GMm"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w13-OK-QVa"/>
-                            <constraint firstItem="gOd-nX-JMG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="ylA-VA-8LW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Summary" image="text.alignleft" catalog="system" id="vz8-Ip-Xt5"/>
                     <connections>
-                        <outlet property="addLoanButton" destination="gOd-nX-JMG" id="jHC-Vx-yjA"/>
-                        <outlet property="addLoanLabel" destination="Pye-kR-u9d" id="Cpc-0z-FoS"/>
+                        <outlet property="addLoanButtonContainer" destination="mRd-91-4m2" id="Ujc-yV-fRz"/>
+                        <outlet property="copyLoanButtonContainer" destination="gn1-i0-cJx" id="Jl8-e2-mZV"/>
                         <outlet property="noLoansLabel" destination="Jca-7k-VUI" id="3mS-Zt-cOR"/>
                         <outlet property="separatorView" destination="Eum-AR-dNF" id="d10-ca-ReZ"/>
                         <outlet property="tableView" destination="Ps6-G5-R1k" id="AuM-ig-jYV"/>
@@ -316,24 +367,37 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="200000" borderStyle="roundedRect" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sue-Bo-aSj">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="200000" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sue-Bo-aSj">
                                                 <rect key="frame" x="165.5" y="0.0" width="168.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rSk-1d-gJp">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rSk-1d-gJp">
                                         <rect key="frame" x="0.0" y="164.5" width="334" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhU-hF-27P">
-                                                <rect key="frame" x="0.0" y="0.0" width="167" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20000" borderStyle="roundedRect" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mPk-k9-iKO">
-                                                <rect key="frame" x="167" y="0.0" width="167" height="34"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c4X-rr-pAy">
+                                                <rect key="frame" x="139.5" y="0.0" width="64" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="V1v-55-tPS"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="$"/>
+                                                    <segment title="%"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="downPaymentTypeSelected:" destination="MKF-9v-8P5" eventType="valueChanged" id="nlc-09-ytP"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="40000" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mPk-k9-iKO">
+                                                <rect key="frame" x="223.5" y="0.0" width="110.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -348,7 +412,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4.5" borderStyle="roundedRect" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEj-36-R4q">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4.5" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EEj-36-R4q">
                                                 <rect key="frame" x="167" y="0.0" width="167" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -372,9 +436,6 @@
                                                     <segment title="25y"/>
                                                     <segment title="30y"/>
                                                 </segments>
-                                                <connections>
-                                                    <action selector="termSelected:" destination="MKF-9v-8P5" eventType="valueChanged" id="vaP-xE-ELZ"/>
-                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -419,6 +480,7 @@
                     </view>
                     <connections>
                         <outlet property="downPaymentTextField" destination="mPk-k9-iKO" id="xEP-O1-lTq"/>
+                        <outlet property="downPaymentTypeSelector" destination="c4X-rr-pAy" id="yoV-oE-0D3"/>
                         <outlet property="interestRateTextField" destination="EEj-36-R4q" id="mwq-9p-Xia"/>
                         <outlet property="priceOrPaymentLabel" destination="5Cw-Aq-fhi" id="gif-aR-Hia"/>
                         <outlet property="priceOrPaymentSelector" destination="lie-bA-YWX" id="MnW-Dh-ba5"/>
@@ -444,6 +506,7 @@
     </scenes>
     <resources>
         <image name="plus.rectangle" catalog="system" width="64" height="46"/>
+        <image name="rectangle.on.rectangle.angled" catalog="system" width="64" height="50"/>
         <image name="text.alignleft" catalog="system" width="64" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>

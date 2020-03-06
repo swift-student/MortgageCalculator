@@ -63,6 +63,12 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="8jR-Bz-mxv"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RXg-7q-Afq"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Loans to Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SR3-Bf-kca">
+                                <rect key="frame" x="87.5" y="370" width="239" height="31.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
@@ -72,9 +78,11 @@
                             <constraint firstItem="gkt-gJ-2WG" firstAttribute="trailing" secondItem="nOM-l4-tBA" secondAttribute="trailing" id="Uzj-XU-7Tg"/>
                             <constraint firstItem="dVO-wP-uat" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="ab1-lN-OpY"/>
                             <constraint firstItem="rug-vH-0yX" firstAttribute="top" secondItem="dVO-wP-uat" secondAttribute="bottom" constant="40" id="glL-Kg-unQ"/>
+                            <constraint firstItem="SR3-Bf-kca" firstAttribute="centerX" secondItem="w6S-I3-UFO" secondAttribute="centerX" id="iaR-QH-O9w"/>
                             <constraint firstItem="dVO-wP-uat" firstAttribute="top" secondItem="nOM-l4-tBA" secondAttribute="top" constant="20" id="oda-IG-dqQ"/>
                             <constraint firstItem="gkt-gJ-2WG" firstAttribute="leading" secondItem="nOM-l4-tBA" secondAttribute="leading" id="r2V-8K-czs"/>
                             <constraint firstItem="nOM-l4-tBA" firstAttribute="bottom" secondItem="gkt-gJ-2WG" secondAttribute="bottom" constant="60" id="rj2-PZ-U3y"/>
+                            <constraint firstItem="SR3-Bf-kca" firstAttribute="centerY" secondItem="nOM-l4-tBA" secondAttribute="centerY" multiplier="0.9" id="xcE-gA-pg8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nOM-l4-tBA"/>
                     </view>
@@ -85,6 +93,7 @@
                         <outlet property="graphScrollContentWidth" destination="fLe-nk-11T" id="7cW-zq-N7O"/>
                         <outlet property="graphScrollView" destination="dVO-wP-uat" id="KYW-gg-7zA"/>
                         <outlet property="graphSelector" destination="rug-vH-0yX" id="HII-Us-Y0h"/>
+                        <outlet property="noLoansLabel" destination="SR3-Bf-kca" id="tnq-x2-Sgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6I-DQ-OdK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

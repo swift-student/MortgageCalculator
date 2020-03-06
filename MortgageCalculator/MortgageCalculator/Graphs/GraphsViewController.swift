@@ -15,6 +15,7 @@ class GraphsViewController: UIViewController {
     @IBOutlet weak var graphScrollContentView: UIView!
     @IBOutlet weak var graphScrollContentWidth: NSLayoutConstraint!
     
+    @IBOutlet weak var noLoansLabel: UILabel!
     @IBOutlet weak var graphSelector: UISegmentedControl!
 
     
@@ -203,9 +204,12 @@ class GraphsViewController: UIViewController {
     func updateLoanSchedules() {
         if let loanA = loanController.loans.first {
             loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
+            noLoansLabel.isHidden = true
+            graphScrollView.isHidden = false
         } else {
             loanASchedule = nil
-            /// We don't have any loans to display
+            noLoansLabel.isHidden = false
+            graphScrollView.isHidden = true
         }
         if let loanB = loanController.loans.element(atIndex: 1) {
             loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
