@@ -14,10 +14,13 @@ protocol LoanDetailDelegate {
 class LoanDetailViewController: UIViewController {
     
     //MARK: - IBOutlets
+    
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceOrPaymentSelector: UISegmentedControl!
     @IBOutlet weak var priceOrPaymentTextField: UITextField!
     @IBOutlet weak var priceOrPaymentLabel: UILabel!
     @IBOutlet weak var downPaymentTextField: UITextField!
+    @IBOutlet weak var downPaymentTypeSelector: UISegmentedControl!
     @IBOutlet weak var interestRateTextField: UITextField!
     @IBOutlet weak var termSelector: UISegmentedControl!
     
@@ -27,14 +30,34 @@ class LoanDetailViewController: UIViewController {
     @IBAction func priceOrPaymentSelected(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             priceOrPaymentLabel.text = "Purchase Price:"
-            priceOrPaymentTextField.text = String(loan?.purchasePrice ?? 0)
+            if let purchasePrice = loan?.purchasePrice {
+                priceOrPaymentTextField.text = String(format: "%.0f", purchasePrice)
+            } else {
+                priceOrPaymentTextField.text = ""
+            }
         } else {
             priceOrPaymentLabel.text = "Monthly Payment:"
-             priceOrPaymentTextField.text = String(loan?.monthlyPayment ?? 0)
+            if let monthlyPayment = loan?.monthlyPayment {
+                priceOrPaymentTextField.text = String(format: "%.0f", monthlyPayment)
+            } else {
+                priceOrPaymentTextField.text = ""
+            }
         }
     }
     
-    @IBAction func termSelected(_ sender: UISegmentedControl) {
+    @IBAction func downPaymentTypeSelected(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            downPaymentTextField.placeholder = "40000"
+            downPaymentTextField.text = String(format: "%.0f", loan?.downPayment ?? 0)
+            if downPaymentTextField.text == "0" { downPaymentTextField.text = ""}
+        } else {
+            downPaymentTextField.placeholder = "20"
+            if let purchasePrice = loan?.purchasePrice,
+                let downPayment = loan?.downPayment {
+                downPaymentTextField.text = String(format: "%.0f", downPayment / purchasePrice * 100)
+                if downPaymentTextField.text == "0" { downPaymentTextField.text = ""}
+            }
+        }
     }
     
     @IBAction func cancelTapped(_ sender: UIButton) {
@@ -46,6 +69,10 @@ class LoanDetailViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    
+    //MARK: - Properties
+    
+    var defaultLoanName: String?
     var loan: Loan?
     var loanController: LoanController?
     var delegate: LoanDetailDelegate?
@@ -56,18 +83,26 @@ class LoanDetailViewController: UIViewController {
     private var shouldSave = true
     
     private func updateViews() {
+        if let defaultLoanName = defaultLoanName {
+            titleTextField.text = defaultLoanName
+        }
+        
         guard let loan = loan else { return }
         
+        titleTextField.text = loan.name
+        
         if let purchasePrice = loan.purchasePrice {
-            priceOrPaymentTextField.text = String(purchasePrice)
+            priceOrPaymentTextField.text = String(format: "%.0f", purchasePrice)
         }
         
         if let monthlyPayment = loan.monthlyPayment {
             priceOrPaymentSelector.selectedSegmentIndex = 1
-            priceOrPaymentTextField.text = String(monthlyPayment)
+            priceOrPaymentTextField.text = String(format: "%.0f", monthlyPayment)
         }
         
-        downPaymentTextField.text = String(loan.downPayment)
+        downPaymentTextField.text = String(format: "%.0f", loan.downPayment)
+        if downPaymentTextField.text == "0" { downPaymentTextField.text = ""}
+        
         interestRateTextField.text = String(loan.interestRate)
         
         switch loan.term {
@@ -83,12 +118,11 @@ class LoanDetailViewController: UIViewController {
     }
     
     private func save() {
+        guard let loanName = titleTextField.text else { return }
+        
         guard let priceOrPaymentText = priceOrPaymentTextField.text,
               let downPaymentText = downPaymentTextField.text,
               let interestRateText = interestRateTextField.text else { return }
-        
-        guard let downPayment = Double(downPaymentText),
-              let interestRate = Double(interestRateText) else { return }
         
         var purchasePrice: Double? = nil
         var monthlyPayment: Double? = nil
@@ -98,6 +132,9 @@ class LoanDetailViewController: UIViewController {
         } else {
             monthlyPayment = Double(priceOrPaymentText)
         }
+        
+        var downPayment = Double(downPaymentText) ?? 0
+        guard let interestRate = Double(interestRateText) else { return }
         
         let term: Int
         
@@ -112,7 +149,19 @@ class LoanDetailViewController: UIViewController {
             term = 30
         }
         
+        if downPaymentTypeSelector.selectedSegmentIndex == 1 {
+            // Down payment entered as percentage
+            if let purchasePrice = purchasePrice {
+                downPayment = purchasePrice * (downPayment / 100)
+            } else if let monthlyPayment = monthlyPayment {
+                let tempLoan = Loan(name: "", purchasePrice: nil, monthlyPayment: monthlyPayment, downPayment: 0, interestRate: interestRate, term: term)
+                let tempPurchasePrice = Calculator.purchasePrice(forLoan: tempLoan)
+                downPayment = tempPurchasePrice * (downPayment / 100)
+            }
+        }
+        
         if var loan = loan {
+            loan.name = loanName
             loan.purchasePrice = purchasePrice
             loan.monthlyPayment = monthlyPayment
             loan.downPayment = downPayment
@@ -120,18 +169,18 @@ class LoanDetailViewController: UIViewController {
             loan.term = term
             loanController?.update(loan: loan)
         } else {
-            let newLoan = Loan(purchasePrice: purchasePrice, monthlyPayment: monthlyPayment, downPayment: downPayment, interestRate: interestRate, term: term)
+            let newLoan = Loan(name: loanName, purchasePrice: purchasePrice, monthlyPayment: monthlyPayment, downPayment: downPayment, interestRate: interestRate, term: term)
             loanController?.add(loan: newLoan)
         }
         
         delegate?.didFinishEditing()
     }
     
+    
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {

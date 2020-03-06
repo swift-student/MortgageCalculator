@@ -21,4 +21,8 @@ extension Double {
     var currencyString: String? {
         NumberFormatter.currencyFormatter.string(from: NSNumber(value: self))
     }
+    
+    func roundedToCent(_ roundingRule: FloatingPointRoundingRule) -> Double {
+        (self * 100).rounded(roundingRule) / 100
+    }
 }

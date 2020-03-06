@@ -14,14 +14,32 @@ class SummaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noLoansLabel: UILabel!
-    @IBOutlet weak var addLoanButton: UIButton!
-    @IBOutlet weak var addLoanLabel: UILabel!
+    @IBOutlet weak var copyLoanButtonContainer: UIView!
+    @IBOutlet weak var addLoanButtonContainer: UIView!
     @IBOutlet weak var separatorView: UIView!
+    
+    
+    //MARK: - IBActions
+    
+    @IBAction func copyLoanTapped(_ sender: UIButton) {
+        copyLoan()
+    }
     
     
     //MARK: - Properties
     
     var loanController: LoanController!
+    
+    
+    //MARK: - Private
+    
+    func copyLoan() {
+        guard let loan = loanController.loans.first else { return }
+        let copyName = loan.name != "Loan B" ? "Loan B" : "Loan A"
+        let loanCopy = Loan(name: copyName, purchasePrice: loan.purchasePrice, monthlyPayment: loan.monthlyPayment, downPayment: loan.downPayment, interestRate: loan.interestRate, term: loan.term)
+        loanController.add(loan: loanCopy)
+        tableView.insertRows(at: [IndexPath(row: loanController.loans.count - 1, section: 0)], with: .top)
+    }
     
     
     //MARK: - View Lifecycle
@@ -30,11 +48,7 @@ class SummaryViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        // Do any additional setup after loading the view.
-        let testLoan = Loan(purchasePrice: 200000, downPayment: 20000, interestRate: 5.0, term: 30)
-        print(Calculator.monthlyAmortizationSchedule(forLoan: testLoan))
     }
-    
     
     
     // MARK: - Navigation
@@ -49,6 +63,13 @@ class SummaryViewController: UIViewController {
                 loanDetailVC.loan = loanController.loans[selectedIndexPath.row]
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
+            
+            if segue.identifier == "AddLoan" {
+                if loanController.loans.count == 1 {
+                    let firstLoanName = loanController.loans[0].name
+                    loanDetailVC.defaultLoanName = firstLoanName != "Loan B" ? "Loan B" : "Loan A"
+                }
+            }
         }
     }
 }
@@ -61,8 +82,8 @@ extension SummaryViewController: UITableViewDataSource {
         let numRows =  loanController.loans.count
         
         noLoansLabel.isHidden = numRows > 0
-        addLoanButton.isHidden = numRows > 1
-        addLoanLabel.isHidden = numRows > 1
+        copyLoanButtonContainer.isHidden = numRows != 1
+        addLoanButtonContainer.isHidden = numRows > 1
         separatorView.isHidden = numRows < 2
         
         return numRows
@@ -74,6 +95,8 @@ extension SummaryViewController: UITableViewDataSource {
         }
         
         cell.loan = loanController.loans[indexPath.row]
+        cell.color = indexPath.row == 0 ? .systemPink : .systemBlue
+        
         return cell
     }
     
@@ -96,6 +119,7 @@ extension SummaryViewController: UITableViewDelegate {
         tableView.frame.height / 2
     }
 }
+
 
 //MARK: - Loan Detail Delegate
 
