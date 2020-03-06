@@ -211,9 +211,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-BR-yNg">
-                                                <rect key="frame" x="10" y="7.5" width="100" height="105"/>
+                                                <rect key="frame" x="10" y="8.5" width="100" height="103"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="105" id="BE3-C4-FOt"/>
+                                                    <constraint firstAttribute="height" constant="103" id="BE3-C4-FOt"/>
                                                     <constraint firstAttribute="width" constant="100" id="jev-H3-xaH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
@@ -225,7 +225,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Loan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of2-Tj-wuL">
-                                                <rect key="frame" x="18" y="92" width="84.5" height="20.5"/>
+                                                <rect key="frame" x="18" y="91" width="84.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
