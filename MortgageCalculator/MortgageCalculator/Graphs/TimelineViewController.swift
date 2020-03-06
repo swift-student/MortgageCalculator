@@ -67,11 +67,12 @@ class TimelineViewController: UIViewController {
         
         updateYears()
         
-        guard let flowLayout = timelineView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
         timelineView.dataSource = self
         timelineView.delegate = self
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        guard let flowLayout = timelineView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         cellSize = flowLayout.itemSize
         horizontalSectionInset = timelineView.frame.width / 2 - cellSize.width / 2
         
