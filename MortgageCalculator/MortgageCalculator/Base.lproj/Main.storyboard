@@ -199,7 +199,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Loans to Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-7k-VUI">
-                                <rect key="frame" x="87.5" y="413" width="239" height="31.5"/>
+                                <rect key="frame" x="87.5" y="370" width="239" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -227,7 +227,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5xf-sk-eeo"/>
+                            <constraint firstItem="Jca-7k-VUI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="5xf-sk-eeo"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7WA-IC-Fls"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ps6-G5-R1k" secondAttribute="trailing" id="Lsn-eh-XmA"/>
                             <constraint firstItem="Ps6-G5-R1k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NXL-Vf-R3q"/>
