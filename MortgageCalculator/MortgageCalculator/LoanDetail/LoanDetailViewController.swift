@@ -29,6 +29,7 @@ class LoanDetailViewController: UIViewController {
     
     @IBAction func priceOrPaymentSelected(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
+            priceOrPaymentTextField.placeholder = "200000"
             priceOrPaymentLabel.text = "Purchase Price:"
             if let purchasePrice = loan?.purchasePrice {
                 priceOrPaymentTextField.text = String(format: "%.0f", purchasePrice)
@@ -37,6 +38,7 @@ class LoanDetailViewController: UIViewController {
             }
         } else {
             priceOrPaymentLabel.text = "Monthly Payment:"
+            priceOrPaymentTextField.placeholder = "1200"
             if let monthlyPayment = loan?.monthlyPayment {
                 priceOrPaymentTextField.text = String(format: "%.0f", monthlyPayment)
             } else {
@@ -52,8 +54,9 @@ class LoanDetailViewController: UIViewController {
             if downPaymentTextField.text == "0" { downPaymentTextField.text = ""}
         } else {
             downPaymentTextField.placeholder = "20"
-            if let purchasePrice = loan?.purchasePrice,
-                let downPayment = loan?.downPayment {
+            if let loan = loan {
+                let purchasePrice = loan.purchasePrice ?? Calculator.purchasePrice(forLoan: loan)
+                let downPayment = loan.downPayment
                 downPaymentTextField.text = String(format: "%.0f", downPayment / purchasePrice * 100)
                 if downPaymentTextField.text == "0" { downPaymentTextField.text = ""}
             }
@@ -95,9 +98,9 @@ class LoanDetailViewController: UIViewController {
             priceOrPaymentTextField.text = String(format: "%.0f", purchasePrice)
         }
         
-        if let monthlyPayment = loan.monthlyPayment {
+        if loan.monthlyPayment != nil {
             priceOrPaymentSelector.selectedSegmentIndex = 1
-            priceOrPaymentTextField.text = String(format: "%.0f", monthlyPayment)
+            priceOrPaymentSelected(priceOrPaymentSelector)
         }
         
         downPaymentTextField.text = String(format: "%.0f", loan.downPayment)
