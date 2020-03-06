@@ -26,11 +26,10 @@ struct BarGraphView: View {
                         maxValue: $viewModel.maxValue,
                         numValues: $viewModel.numValues,
                         shouldAnimate: $viewModel.shouldAnimate)
+                        .frame(maxWidth: .infinity)
                 }
                 
                 if viewModel.sectionTwoTitle != "" {
-                    Spacer()
-                    
                     BarGraphSection(
                         title: $viewModel.sectionTwoTitle,
                         firstValue: $viewModel.sectionTwoFirstValue,
@@ -38,11 +37,10 @@ struct BarGraphView: View {
                         maxValue: $viewModel.maxValue,
                         numValues: $viewModel.numValues,
                         shouldAnimate: $viewModel.shouldAnimate)
+                        .frame(maxWidth: .infinity)
                 }
                 
                 if viewModel.sectionThreeTitle != "" {
-                    Spacer()
-                    
                     BarGraphSection(
                         title: $viewModel.sectionThreeTitle,
                         firstValue: $viewModel.sectionThreeFirstValue,
@@ -50,6 +48,7 @@ struct BarGraphView: View {
                         maxValue: $viewModel.maxValue,
                         numValues: $viewModel.numValues,
                         shouldAnimate: $viewModel.shouldAnimate)
+                        .frame(maxWidth: .infinity)
                 }
                 
                 Spacer()
@@ -120,6 +119,7 @@ struct BarGraphSection: View {
             // Title
             Text(title)
                 .font(.system(size: 24, weight: .bold))
+                .frame(maxWidth: .infinity)
             
             // Bars
             HStack {
@@ -163,14 +163,14 @@ struct BarGraphSection: View {
             // Labels
             if numValues > 0 {
                 Text(firstValue.currencyString ?? "")
-                .fixedSize()
+                .frame(maxWidth: .infinity)
                 .foregroundColor(.firstColor)
             }
             
             
             if numValues > 1 {
                 Text(secondValue.currencyString ?? "")
-                    .fixedSize()
+                    .frame(maxWidth: .infinity)
                     .foregroundColor(.secondColor).padding(.top, 4)
             }
         }

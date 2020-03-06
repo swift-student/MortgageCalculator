@@ -34,7 +34,6 @@ struct Calculator {
         return totalInterest.roundedToCent(.toNearestOrAwayFromZero)
     }
    
-    
     static func monthlyAmortizationSchedule(forLoan loan: Loan) -> AmortizationSchedule {
         var balance = loan.purchasePrice ?? Calculator.purchasePrice(forLoan: loan)
         let monthlyPayment = loan.monthlyPayment ?? Calculator.monthlyPayment(forLoan: loan)
@@ -102,8 +101,4 @@ struct Calculator {
     }
 }
 
-extension Double {
-    func roundedToCent(_ roundingRule: FloatingPointRoundingRule) -> Double {
-        (self * 100).rounded(roundingRule) / 100
-    }
-}
+

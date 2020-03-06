@@ -205,7 +205,7 @@ class GraphsViewController: UIViewController {
             loanASchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanA)
         } else {
             loanASchedule = nil
-            /// We don't have any loans to display
+            // We don't have any loans to display
         }
         if let loanB = loanController.loans.element(atIndex: 1) {
             loanBSchedule = Calculator.yearlyAmortizationSchedule(forLoan: loanB)
