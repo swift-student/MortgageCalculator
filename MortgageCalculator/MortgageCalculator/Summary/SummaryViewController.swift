@@ -25,6 +25,7 @@ class SummaryViewController: UIViewController {
         copyLoan()
     }
     
+    
     //MARK: - Properties
     
     var loanController: LoanController!
@@ -39,6 +40,8 @@ class SummaryViewController: UIViewController {
         loanController.add(loan: loanCopy)
         tableView.insertRows(at: [IndexPath(row: loanController.loans.count - 1, section: 0)], with: .top)
     }
+    
+    
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -116,6 +119,7 @@ extension SummaryViewController: UITableViewDelegate {
         tableView.frame.height / 2
     }
 }
+
 
 //MARK: - Loan Detail Delegate
 
