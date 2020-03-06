@@ -103,8 +103,12 @@ extension SummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            loanController.delete(loan: loanController.loans[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.performBatchUpdates({
+                self.loanController.delete(loan: loanController.loans[indexPath.row])
+                self.tableView.deleteRows(at: [indexPath], with: .left)
+            }, completion: { _ in
+                self.tableView.reloadData()
+            })
         default:
             break
         }
