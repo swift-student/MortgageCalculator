@@ -25,17 +25,8 @@ class LoanSummaryTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var loan: Loan? {
-        didSet {
-            updateLabels()
-        }
-    }
-    
-    var color: UIColor? {
-        didSet {
-            updateHeaderColor()
-        }
-    }
+    var loan: Loan? { didSet { updateLabels() } }
+    var color: UIColor? { didSet { updateHeaderColor() } }
     
     
     //MARK: - Private

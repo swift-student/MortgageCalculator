@@ -15,31 +15,22 @@ class RingGraphViewModel: ObservableObject {
     @Published var title = "Principle"
     
     @Published var firstRingName = "Loan A"
-    @Published var firstRingValue: Double = 100 {
-        didSet {
-            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
-        }
-    }
-    @Published var firstRingMaxValue: Double = 1000 {
-        didSet {
-            firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
-        }
-    }
-    
+    @Published var firstRingValue: Double = 100 { didSet { updateFirstRingProgress() } }
+    @Published var firstRingMaxValue: Double = 1000 { didSet { updateFirstRingProgress() } }
     @Published var firstRingProgress: CGFloat = 0.0
     
     
     @Published var secondRingName = "Loan B"
-    @Published var secondRingValue: Double = 100 {
-        didSet {
-            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
-        }
-    }
-    @Published var secondRingMaxValue: Double = 1000 {
-        didSet {
-            secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
-        }
+    @Published var secondRingValue: Double = 100 { didSet { updateSecondRingProgress() } }
+    @Published var secondRingMaxValue: Double = 1000 { didSet { updateSecondRingProgress() } }
+    @Published var secondRingProgress: CGFloat = 0.0
+    
+    
+    func updateFirstRingProgress() {
+        firstRingProgress = CGFloat(firstRingValue / firstRingMaxValue)
     }
     
-    @Published var secondRingProgress: CGFloat = 0.0
+    func updateSecondRingProgress() {
+        secondRingProgress = CGFloat(secondRingValue / secondRingMaxValue)
+    }
 }
