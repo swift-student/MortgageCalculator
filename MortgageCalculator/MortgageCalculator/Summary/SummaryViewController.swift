@@ -35,6 +35,7 @@ class SummaryViewController: UIViewController {
     
     func copyLoan() {
         guard let loan = loanController.loans.first else { return }
+        
         let copyName = loan.name != "Loan B" ? "Loan B" : "Loan A"
         let loanCopy = Loan(name: copyName, purchasePrice: loan.purchasePrice, monthlyPayment: loan.monthlyPayment, downPayment: loan.downPayment, interestRate: loan.interestRate, term: loan.term)
         loanController.add(loan: loanCopy)

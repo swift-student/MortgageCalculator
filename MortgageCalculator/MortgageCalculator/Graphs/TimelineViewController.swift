@@ -21,16 +21,8 @@ class TimelineViewController: UIViewController {
     
     //MARK: - Properties
     var delegate: TimelineDelegate?
-    var startDate = Date() {
-        didSet {
-            updateYears()
-        }
-    }
-    var numYears = 30 {
-        didSet {
-            updateYears()
-        }
-    }
+    var startDate = Date() { didSet { updateYears() } }
+    var numYears = 30 { didSet { updateYears() } }
     
     
     //MARK: - Private
@@ -72,10 +64,12 @@ class TimelineViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         guard let flowLayout = timelineView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
         cellSize = flowLayout.itemSize
         horizontalSectionInset = timelineView.frame.width / 2 - cellSize.width / 2
-        
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: horizontalSectionInset, bottom: 0, right: horizontalSectionInset)
     }
     
@@ -116,7 +110,7 @@ extension TimelineViewController: UICollectionViewDelegate {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let idealHorizontalOffset = (targetContentOffset.pointee.x / 100).rounded() * 100
+        let idealHorizontalOffset = (targetContentOffset.pointee.x / cellSize.width).rounded() * cellSize.width
         targetContentOffset.pointee = CGPoint(x: idealHorizontalOffset, y: 0)
     }
 }
