@@ -93,6 +93,8 @@ struct Calculator {
     
     //MARK: - Private
     
+    // I really don't understand the math behind this number, but it is the "magic number"
+    // that is needed to calculate either purchase price or monthly payments for a loan
     private static func magicNumber(monthlyRate: Double, months: Int) -> Double {
         let dividend = monthlyRate * pow(1 + monthlyRate, Double(months))
         let divisor = pow(1 + monthlyRate, Double(months)) - 1
