@@ -12,8 +12,8 @@ class GraphsViewController: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet weak var graphScrollView: UIScrollView!
-    @IBOutlet weak var graphScrollContentView: UIView!
-    @IBOutlet weak var graphScrollContentWidth: NSLayoutConstraint!
+    @IBOutlet weak var graphStackView: UIStackView!
+
     
     @IBOutlet weak var noLoansLabel: UILabel!
     @IBOutlet weak var graphSelector: UISegmentedControl!
@@ -234,9 +234,9 @@ class GraphsViewController: UIViewController {
     func setupGraphScrollView() {
         graphScrollView.delegate = self
         
-        graphScrollContentView.addSubview(totalsBarGraph)
-        graphScrollContentView.addSubview(yearlyBarGraph)
-        graphScrollContentView.addSubview(progressRingGraph)
+        graphStackView.addArrangedSubview(totalsBarGraph)
+        graphStackView.addArrangedSubview(yearlyBarGraph)
+        graphStackView.addArrangedSubview(progressRingGraph)
     }
     
     func setupGraphSelector() {
@@ -249,18 +249,6 @@ class GraphsViewController: UIViewController {
         
         timelineVC.numYears = loanController.loans.map{ $0.term }.reduce(1, { max($0, $1) })
         updateLoanSchedules()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        layoutGraphScrollView()
-    }
-    
-    func layoutGraphScrollView() {
-        graphScrollContentWidth.constant = graphScrollView.frame.width * 3
-        totalsBarGraph.frame = CGRect(origin: graphScrollContentView.bounds.origin, size: graphScrollView.frame.size)
-        yearlyBarGraph.frame = CGRect(origin: CGPoint(x: totalsBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
-        progressRingGraph.frame = CGRect(origin: CGPoint(x: yearlyBarGraph.frame.maxX, y: totalsBarGraph.frame.minY), size: graphScrollView.frame.size)
     }
 }
 
