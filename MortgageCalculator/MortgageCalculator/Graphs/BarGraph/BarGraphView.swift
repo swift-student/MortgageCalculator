@@ -21,34 +21,34 @@ struct BarGraphView: View {
                 
                 if viewModel.sectionOneTitle != "" {
                     BarGraphSection(
-                        title: $viewModel.sectionOneTitle,
-                        firstValue: $viewModel.sectionOneFirstValue,
-                        secondValue: $viewModel.sectionOneSecondValue ,
-                        maxValue: $viewModel.maxValue,
-                        numValues: $viewModel.numValues,
-                        shouldAnimate: $viewModel.shouldAnimate)
+                        title: viewModel.sectionOneTitle,
+                        firstValue: viewModel.sectionOneFirstValue,
+                        secondValue: viewModel.sectionOneSecondValue ,
+                        maxValue: viewModel.maxValue,
+                        numValues: viewModel.numValues,
+                        shouldAnimate: viewModel.shouldAnimate)
                         .frame(maxWidth: .infinity)
                 }
                 
                 if viewModel.sectionTwoTitle != "" {
                     BarGraphSection(
-                        title: $viewModel.sectionTwoTitle,
-                        firstValue: $viewModel.sectionTwoFirstValue,
-                        secondValue: $viewModel.sectionTwoSecondValue,
-                        maxValue: $viewModel.maxValue,
-                        numValues: $viewModel.numValues,
-                        shouldAnimate: $viewModel.shouldAnimate)
+                        title: viewModel.sectionTwoTitle,
+                        firstValue: viewModel.sectionTwoFirstValue,
+                        secondValue: viewModel.sectionTwoSecondValue,
+                        maxValue: viewModel.maxValue,
+                        numValues: viewModel.numValues,
+                        shouldAnimate: viewModel.shouldAnimate)
                         .frame(maxWidth: .infinity)
                 }
                 
                 if viewModel.sectionThreeTitle != "" {
                     BarGraphSection(
-                        title: $viewModel.sectionThreeTitle,
-                        firstValue: $viewModel.sectionThreeFirstValue,
-                        secondValue: $viewModel.sectionThreeSecondValue,
-                        maxValue: $viewModel.maxValue,
-                        numValues: $viewModel.numValues,
-                        shouldAnimate: $viewModel.shouldAnimate)
+                        title: viewModel.sectionThreeTitle,
+                        firstValue: viewModel.sectionThreeFirstValue,
+                        secondValue: viewModel.sectionThreeSecondValue,
+                        maxValue: viewModel.maxValue,
+                        numValues: viewModel.numValues,
+                        shouldAnimate: viewModel.shouldAnimate)
                         .frame(maxWidth: .infinity)
                 }
                 
@@ -107,6 +107,8 @@ struct BarGraphView: View {
             .foregroundColor(.white)
     }
 }
+
+
 
 
 struct BarGraphView_Previews: PreviewProvider {

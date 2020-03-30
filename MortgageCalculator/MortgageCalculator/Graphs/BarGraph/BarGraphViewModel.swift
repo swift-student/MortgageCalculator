@@ -27,6 +27,14 @@ class BarGraphViewModel: ObservableObject {
     
     @Published var maxValue: Double = 1000
     
-    @Published var firstKeyName = "Loan A"
-    @Published var secondKeyName = "Loan B"
+    @Published var firstKeyName = "" { didSet { updateNumValues() } }
+    @Published var secondKeyName = "" { didSet { updateNumValues() } }
+    
+    
+    private func updateNumValues() {
+        var count = 0
+        if firstKeyName != "" { count += 1 }
+        if secondKeyName != "" { count += 1 }
+        numValues = count
+    }
 }

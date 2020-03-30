@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct Ring: View {
-    @State var startColor: Color
-    @State var endColor: Color
-    @Binding var progress: CGFloat
-    @Binding var shouldAnimate: Bool
+    var startColor: Color
+    var endColor: Color
+    var progress: CGFloat
+    var shouldAnimate: Bool
     
     var body: some View {
         ZStack {

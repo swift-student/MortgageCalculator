@@ -35,8 +35,8 @@ struct RingGraphView: View {
                             .frame(maxWidth: .infinity)
                         Ring(startColor: Color(#colorLiteral(red: 0.8684985017, green: 0.6158105232, blue: 1, alpha: 1)),
                              endColor: .firstColor,
-                             progress: $viewModel.firstRingProgress,
-                             shouldAnimate: $viewModel.shouldAnimate)
+                             progress: viewModel.firstRingProgress,
+                             shouldAnimate: viewModel.shouldAnimate)
                             .padding()
                         Text("\(viewModel.firstRingValue.currencyString ?? "") / \(viewModel.firstRingMaxValue.currencyString ?? "")")
                             .font(.system(size: 14, weight: .bold))
@@ -53,8 +53,8 @@ struct RingGraphView: View {
                             .frame(maxWidth: .infinity)
                         Ring(startColor: Color(#colorLiteral(red: 0.7489833048, green: 1, blue: 1, alpha: 1)),
                              endColor: .secondColor,
-                             progress: $viewModel.secondRingProgress,
-                             shouldAnimate: $viewModel.shouldAnimate)
+                             progress: viewModel.secondRingProgress,
+                             shouldAnimate: viewModel.shouldAnimate)
                             .padding()
                         Text("\(viewModel.secondRingValue.currencyString ?? "") / \(viewModel.secondRingMaxValue.currencyString ?? "")")
                             .font(.system(size: 14, weight: .bold))
