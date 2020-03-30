@@ -10,13 +10,13 @@ import SwiftUI
 
 struct BarGraphSection: View {
     
-    @Binding var title: String
-    @Binding var firstValue: Double
-    @Binding var secondValue: Double
-    @Binding var maxValue: Double
-    @Binding var numValues: Int
+    var title: String
+    var firstValue: Double
+    var secondValue: Double
+    var maxValue: Double
+    var numValues: Int
     
-    @Binding var shouldAnimate: Bool
+    var shouldAnimate: Bool
     
     var body: some View {
         VStack {
